@@ -32,9 +32,11 @@ dependencies {
     api(MvvmExt.ktx)
     api(MvvmExt.constraintlayout)
     api(MvvmExt.lifecycle)
+    api(MvvmExt.viewmodelKtx)
     api(MvvmExt.retrofit)
     api(MvvmExt.converterGson)
     api(MvvmExt.coroutines)
+    api(MvvmExt.okhttp3Log)
 
     androidTestImplementation(MvvmExt.junit)
     androidTestImplementation(MvvmExt.runner)

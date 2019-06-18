@@ -1,7 +1,8 @@
-package win.regin.mvvm
+package win.regin.mvvm.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import win.regin.mvvm.R
 
 class MainActivity : AppCompatActivity() {
 

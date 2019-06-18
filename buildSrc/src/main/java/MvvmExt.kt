@@ -22,9 +22,10 @@ object Version {
     const val junitVersion = "1.1.0"
     const val runnerVersion = "1.2.0"
     const val espressoVersion = "3.2.0"
-    const val lifecycleVersion = "2.0.0"
+    const val lifecycleVersion = "2.2.0-alpha01"
     const val retrofitVersion = "2.6.0"
     const val coroutinesVersion = "1.2.1"
+    const val okhttp3LogVersion = "3.12.1"
 }
 
 object MvvmExt {
@@ -39,9 +40,12 @@ object MvvmExt {
     const val espresso = "androidx.test.espresso:espresso-core:${Version.espressoVersion}"
     //https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Version.lifecycleVersion}"
+    val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycleVersion}"
     //https://github.com/square/retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
+    const val okhttp3Log = "com.squareup.okhttp3:logging-interceptor:${Version.okhttp3LogVersion}"
     //https://github.com/Kotlin/kotlinx.coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesVersion}"
+
 }
