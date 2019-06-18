@@ -1,0 +1,1 @@
+/home/reginer/Android/AndroidStudioProjects/Regin/MVVMHub/buildSrc/build/classes/kotlin/main/AppConfig.class:/home/reginer/Android/AndroidStudioProjects/Regin/MVVMHub/buildSrc/build/classes/kotlin/main/MvvmExt.class:/home/reginer/Android/AndroidStudioProjects/Regin/MVVMHub/buildSrc/build/classes/kotlin/main/Version.class
