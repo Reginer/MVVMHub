@@ -21,7 +21,7 @@ abstract class BaseActivity : AppCompatActivity() {
         LayoutInflater.from(this).inflate(layoutId, viewContent)
         initView(savedInstanceState)
         initHeaderView()
-
+        createObserver()
     }
 
     override fun onStart() {
@@ -56,5 +56,7 @@ abstract class BaseActivity : AppCompatActivity() {
     protected open fun initToolBar() {
 
     }
+
+    protected abstract fun createObserver()
 }
 

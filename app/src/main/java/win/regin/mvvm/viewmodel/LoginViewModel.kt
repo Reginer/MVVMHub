@@ -1,13 +1,16 @@
 package win.regin.mvvm.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
+import win.regin.common.database.DaoManager
+import win.regin.common.database.UserEntity
 import win.regin.common.utils.Logcat
 import win.regin.mvvm.model.BaseEntity
-import win.regin.mvvm.model.UserEntity
 import win.regin.mvvm.repository.LoginRepository
 
 /**
@@ -18,16 +21,32 @@ import win.regin.mvvm.repository.LoginRepository
 class LoginViewModel : BaseViewModel() {
     private val loginRepository = LoginRepository()
 
-    val loginResult: MutableLiveData<BaseEntity<UserEntity>> = MutableLiveData()
+    private val loginLiveData: MutableLiveData<BaseEntity<UserEntity>> = MutableLiveData()
+    val loginResult: LiveData<UserEntity?> = Transformations.map(loginLiveData) {
+        if (it.errorCode == 0) {
+            saveUser(it.data)
+            it.data
+        } else {
+            null
+        }
+    }
 
     fun login(username: String, password: String) {
         viewModelScope.launch {
             runCatching {
                 loginRepository.login(username, password)
             }.onSuccess {
-                Logcat.d(it.toString())
+                loginLiveData.postValue(it)
             }.onFailure {
                 Logcat.e(Log.getStackTraceString(it))
+            }
+        }
+    }
+
+    private fun saveUser(userEntity: UserEntity) {
+        viewModelScope.launch {
+            runCatching {
+                loginRepository.insertUser(userEntity)
             }
         }
     }

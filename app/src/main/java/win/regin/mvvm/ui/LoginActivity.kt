@@ -1,7 +1,13 @@
 package win.regin.mvvm.ui
 
 import android.os.Bundle
+import androidx.lifecycle.Observer
+import kotlinx.android.synthetic.main.activity_login.*
 import win.regin.base.BaseVmActivity
+import win.regin.common.database.DaoManager
+import win.regin.common.database.DaoOptions
+import win.regin.common.text
+import win.regin.common.utils.Logcat
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.LoginViewModel
 
@@ -11,11 +17,23 @@ import win.regin.mvvm.viewmodel.LoginViewModel
  *         功能描述:
  */
 class LoginActivity : BaseVmActivity<LoginViewModel>() {
+
+
     override val layoutId: Int get() = R.layout.activity_login
 
     override
     fun initView(savedInstanceState: Bundle?) {
-        mViewModel.login("R", "123456789")
+
+        btnLogin.setOnClickListener {
+            mViewModel.login(etUsername.text(), etPwd.text())
+        }
+
+    }
+
+    override fun createObserver() {
+        mViewModel.loginResult.observe(this, Observer {
+            it?.let { finish() }
+        })
     }
 
 }

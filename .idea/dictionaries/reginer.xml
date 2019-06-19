@@ -1,8 +1,11 @@
 <component name="ProjectDictionaryState">
   <dictionary name="reginer">
     <words>
+      <w>autofill</w>
+      <w>constraintlayout</w>
       <w>coroutines</w>
       <w>mvvm</w>
+      <w>okhttp</w>
       <w>regin</w>
     </words>
   </dictionary>

@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">Hub</string>
     <string name="login">登录</string>
+    <string name="input_username">输入账号</string>
+    <string name="input_pwd">输入密码</string>
 </resources>

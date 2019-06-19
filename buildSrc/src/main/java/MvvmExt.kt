@@ -26,6 +26,9 @@ object Version {
     const val retrofitVersion = "2.6.0"
     const val coroutinesVersion = "1.2.1"
     const val okhttp3LogVersion = "3.12.1"
+    const val ankoVersion = "0.10.7"
+    const val materialVersion = "1.1.0-alpha07"
+    const val roomVersion = "2.1.0"
 }
 
 object MvvmExt {
@@ -47,5 +50,12 @@ object MvvmExt {
     const val okhttp3Log = "com.squareup.okhttp3:logging-interceptor:${Version.okhttp3LogVersion}"
     //https://github.com/Kotlin/kotlinx.coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesVersion}"
+    const val anko = "org.jetbrains.anko:anko-commons:${Version.ankoVersion}"
+    const val material = "com.google.android.material:material:${Version.materialVersion}"
+
+    // room
+    val room = "androidx.room:room-runtime:${Version.roomVersion}"
+    val roomCompiler = "androidx.room:room-compiler:${Version.roomVersion}"
+    val roomKtx = "androidx.room:room-ktx:${Version.roomVersion}"
 
 }

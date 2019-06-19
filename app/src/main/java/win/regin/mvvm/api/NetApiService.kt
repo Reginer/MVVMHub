@@ -3,9 +3,9 @@ package win.regin.mvvm.api
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
+import win.regin.common.database.UserEntity
 import win.regin.mvvm.model.Urls
 import win.regin.mvvm.model.BaseEntity
-import win.regin.mvvm.model.UserEntity
 
 /**
  * @author :Reginer in  2019/6/18 21:29.

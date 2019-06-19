@@ -17,4 +17,3 @@ data class BaseEntity<T>(
     }
 }
 
-data class UserEntity(val username: String? = "")
