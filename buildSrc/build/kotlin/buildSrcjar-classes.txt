@@ -1,1 +1,0 @@
-D:\Program\Android\Workspace\MVVMHub\buildSrc\build\classes\kotlin\main\AppConfig.class;D:\Program\Android\Workspace\MVVMHub\buildSrc\build\classes\kotlin\main\MvvmExt.class;D:\Program\Android\Workspace\MVVMHub\buildSrc\build\classes\kotlin\main\Version.class
