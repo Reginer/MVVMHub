@@ -15,4 +15,8 @@ interface IDaoOptions {
     suspend fun insertUser(userEntity: UserEntity)
 
     suspend fun deleteAllUser()
+
+    suspend fun insertArticle(articleEntity: ArticleEntity)
+
+    suspend fun queryArticle(curPage: Int): List<ArticleEntity>
 }

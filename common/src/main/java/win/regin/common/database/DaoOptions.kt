@@ -11,6 +11,8 @@ import kotlinx.coroutines.withContext
  * 功能描述:
  */
 class DaoOptions : IDaoOptions {
+
+
     override suspend fun getAllUser(): List<UserEntity>? {
         return DaoManager.getInstance().dao.userDao.getAllUser()
     }
@@ -30,6 +32,16 @@ class DaoOptions : IDaoOptions {
         withContext(Dispatchers.IO) {
             DaoManager.getInstance().dao.userDao.deleteAll()
         }
+    }
+
+    override suspend fun insertArticle(articleEntity: ArticleEntity) {
+        withContext(Dispatchers.IO) {
+            DaoManager.getInstance().dao.articleDao.insert(articleEntity)
+        }
+    }
+
+    override suspend fun queryArticle(curPage: Int): List<ArticleEntity> {
+        return DaoManager.getInstance().dao.articleDao.queryByPage(curPage)
     }
 
 

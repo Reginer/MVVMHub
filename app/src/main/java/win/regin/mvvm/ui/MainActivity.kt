@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
 import org.jetbrains.anko.startActivity
-import win.regin.base.BaseActivity
 import win.regin.base.BaseVmActivity
 import win.regin.common.utils.Logcat
 import win.regin.mvvm.R

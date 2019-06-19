@@ -2,6 +2,7 @@ package win.regin.common.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import win.regin.common.database.dao.ArticleDao
 import win.regin.common.database.dao.UserDao
 
 /**
@@ -10,8 +11,10 @@ import win.regin.common.database.dao.UserDao
  * 功能描述:
  */
 
-@Database(entities = [UserEntity::class], version = 1, exportSchema = false)
+@Database(entities = [UserEntity::class,ArticleEntity::class], version = 2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val userDao: UserDao
+
+    abstract val articleDao:ArticleDao
 }
