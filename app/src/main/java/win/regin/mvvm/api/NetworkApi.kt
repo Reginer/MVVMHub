@@ -16,17 +16,13 @@ object NetworkApi {
     fun getApi(): NetApiService {
         return Retrofit.Builder().baseUrl(Urls.SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .client(getOkHttpClient(getLoggingInterceptor())).build().create(
+            .client(getOkHttpClient()).build().create(
                 NetApiService::class.java
             )
     }
 
-    private fun getOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
-        return OkHttpClient.Builder().apply { addInterceptor(interceptor) }.build()
-    }
-
-    private fun getLoggingInterceptor(): HttpLoggingInterceptor {
-        return HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
+    private fun getOkHttpClient(): OkHttpClient {
+        return OkHttpClient.Builder().apply { addInterceptor(LogInterceptor()) }.build()
     }
 
 }

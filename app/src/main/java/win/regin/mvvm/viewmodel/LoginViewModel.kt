@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
+import win.regin.common.utils.Logcat
 import win.regin.mvvm.model.BaseEntity
 import win.regin.mvvm.model.UserEntity
 import win.regin.mvvm.repository.LoginRepository
@@ -24,9 +25,9 @@ class LoginViewModel : BaseViewModel() {
             runCatching {
                 loginRepository.login(username, password)
             }.onSuccess {
-                Log.d("Reginer",it.toString())
+                Logcat.d(it.toString())
             }.onFailure {
-                Log.e("Reginer",Log.getStackTraceString(it))
+                Logcat.e(Log.getStackTraceString(it))
             }
         }
     }

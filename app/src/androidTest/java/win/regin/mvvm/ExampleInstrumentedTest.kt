@@ -21,4 +21,11 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getInstrumentation().context
         assertEquals("win.regin.mvvm", appContext.packageName)
     }
+
+    @Test
+    fun getLogSEP() {
+        val fileSEP = System.getProperty("file.separator")
+        val lineSEP = System.getProperty("line.separator")
+        println("$fileSEP--$lineSEP")
+    }
 }

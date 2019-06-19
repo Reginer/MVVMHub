@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -27,7 +28,7 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':common')
-    androidTestImplementation(MvvmExt.junit)
-    androidTestImplementation(MvvmExt.runner)
+    testImplementation(MvvmExt.junit)
+    androidTestImplementation(MvvmExt.extUnit)
     androidTestImplementation(MvvmExt.espresso)
 }

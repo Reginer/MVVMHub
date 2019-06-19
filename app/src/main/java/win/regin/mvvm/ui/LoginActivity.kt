@@ -15,7 +15,7 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
 
     override
     fun initView(savedInstanceState: Bundle?) {
-        mViewModel.login("r", "123456789")
+        mViewModel.login("R", "123456789")
     }
 
 }

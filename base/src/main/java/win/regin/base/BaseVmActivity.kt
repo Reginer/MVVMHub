@@ -15,9 +15,8 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
     protected lateinit var mViewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         mViewModel = createViewModel()
-        initView(savedInstanceState)
+        super.onCreate(savedInstanceState)
     }
 
 

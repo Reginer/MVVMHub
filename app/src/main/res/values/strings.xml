@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MVVM</string>
+    <string name="app_name">Hub</string>
+    <string name="login">登录</string>
 </resources>

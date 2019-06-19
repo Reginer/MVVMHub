@@ -1,0 +1,20 @@
+<resources>
+
+
+    <style name="Theme.ToolBar.Menu" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="android:textSize">16sp</item>
+        <item name="android:src">@drawable/ic_menu_more</item>
+        <item name="overlapAnchor">false</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="android:dropDownListViewStyle">@style/dropDownStyle</item>
+        <item name="dropDownListViewStyle">@style/dropDownStyle</item>
+    </style>
+
+    <style name="dropDownStyle" parent="android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:divider">?attr/colorPrimaryDark</item>
+        <item name="android:dividerHeight">0.5dp</item>
+        <item name="android:background">@drawable/bg_menu_touch</item>
+    </style>
+
+
+</resources>

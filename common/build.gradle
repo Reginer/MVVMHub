@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+apply plugin: 'kotlin-android'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -38,7 +38,7 @@ dependencies {
     api(MvvmExt.coroutines)
     api(MvvmExt.okhttp3Log)
 
-    androidTestImplementation(MvvmExt.junit)
-    androidTestImplementation(MvvmExt.runner)
+    testImplementation(MvvmExt.junit)
+    androidTestImplementation(MvvmExt.extUnit)
     androidTestImplementation(MvvmExt.espresso)
 }
