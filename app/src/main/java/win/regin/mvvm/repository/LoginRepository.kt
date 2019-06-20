@@ -1,6 +1,6 @@
 package win.regin.mvvm.repository
 
-import win.regin.common.database.DaoManager
+import win.regin.common.database.BoxOptions
 import win.regin.common.database.UserEntity
 import win.regin.mvvm.api.NetworkApi
 import win.regin.mvvm.model.BaseEntity
@@ -15,8 +15,8 @@ class LoginRepository {
         return NetworkApi.getApi().login(username, password)
     }
 
-    suspend fun insertUser(userEntity: UserEntity) {
-        DaoManager.getInstance().daoOptions.deleteAllUser()
-        DaoManager.getInstance().daoOptions.insertUser(userEntity)
+    fun insertUser(userEntity: UserEntity) {
+        BoxOptions.deleteAllUser()
+        BoxOptions.insertUser(userEntity)
     }
 }

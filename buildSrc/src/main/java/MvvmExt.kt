@@ -15,7 +15,7 @@ object AppConfig {
 
 object Version {
     const val gradleVersion = "3.4.1"
-    const val kotlinVersion = "1.3.31"
+    const val kotlinVersion = "1.3.40"
     const val appcompatVersion = "1.0.2"
     const val ktxVersion = "1.0.2"
     const val constraintlayoutVersion = "1.1.3"
@@ -28,7 +28,7 @@ object Version {
     const val okhttp3LogVersion = "3.12.1"
     const val ankoVersion = "0.10.7"
     const val materialVersion = "1.1.0-alpha07"
-    const val roomVersion = "2.1.0"
+    const val objectboxVersion  = "2.3.4"
 }
 
 object MvvmExt {
@@ -53,9 +53,11 @@ object MvvmExt {
     const val anko = "org.jetbrains.anko:anko-commons:${Version.ankoVersion}"
     const val material = "com.google.android.material:material:${Version.materialVersion}"
 
-    // room
-    val room = "androidx.room:room-runtime:${Version.roomVersion}"
-    val roomCompiler = "androidx.room:room-compiler:${Version.roomVersion}"
-    val roomKtx = "androidx.room:room-ktx:${Version.roomVersion}"
+    // objectbox
+    const val objectboxProcessor = "io.objectbox:objectbox-processor:${Version.objectboxVersion}"
+    const val objectboxKotlin = "io.objectbox:objectbox-kotlin:${Version.objectboxVersion}"
+    const val objectboxAndroid = "io.objectbox:objectbox-android:${Version.objectboxVersion}"
+    const val objectboxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:${Version.objectboxVersion}"
+
 
 }

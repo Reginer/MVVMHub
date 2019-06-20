@@ -1,10 +1,12 @@
 package win.regin.common.database
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-import androidx.room.TypeConverters
+
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import io.objectbox.annotation.Convert
+import io.objectbox.annotation.Entity
+import io.objectbox.annotation.Id
+import io.objectbox.annotation.Unique
 import win.regin.common.convert.ArticleListConvert
 import win.regin.common.entity.ArticleDataEntity
 
@@ -13,10 +15,10 @@ import win.regin.common.entity.ArticleDataEntity
  * 联系方式:QQ:282921012
  * 功能描述:
  */
-@Entity(tableName = "user")
+@Entity
 data class UserEntity(
-    @PrimaryKey
-    var id: Int = 0,
+    @Id
+    var dbId: Long = 0,
     val username: String? = ""
 ) {
     override fun toString(): String {
@@ -24,17 +26,19 @@ data class UserEntity(
     }
 }
 
-@Entity(tableName = "article")
-@TypeConverters(ArticleListConvert::class)
+@Entity
 data class ArticleEntity(
-    @PrimaryKey
-    var curPage: Int = 0,
+    @Id
+    var dbId: Long = 0,
+    @Unique
+    var curPage: Long = 0,
     var offset: Int = 0,
     var isOver: Boolean = false,
     var pageCount: Int = 0,
     var size: Int = 0,
     var total: Int = 0,
     @SerializedName("datas")
+    @Convert(converter = ArticleListConvert::class, dbType = String::class)
     var articleList: List<ArticleDataEntity>? = null
 
 )

@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
+apply plugin: 'io.objectbox'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -40,9 +41,9 @@ dependencies {
     api(MvvmExt.okhttp3Log)
     api(MvvmExt.anko)
     api(MvvmExt.material)
-    api(MvvmExt.room)
-    api(MvvmExt.roomKtx)
-    kapt(MvvmExt.roomCompiler)
+    api(MvvmExt.objectboxAndroid)
+    api(MvvmExt.objectboxKotlin)
+    kapt(MvvmExt.objectboxProcessor)
 
     testImplementation(MvvmExt.junit)
     androidTestImplementation(MvvmExt.extUnit)

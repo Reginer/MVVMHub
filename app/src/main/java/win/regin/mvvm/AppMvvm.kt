@@ -1,7 +1,7 @@
 package win.regin.mvvm
 
 import win.regin.common.AppCommon
-import win.regin.common.database.DaoManager
+import win.regin.common.database.BoxManager
 
 /**
  * @author :Reginer in  19-6-19 上午9:35.
@@ -11,6 +11,6 @@ import win.regin.common.database.DaoManager
 class AppMvvm : AppCommon() {
     override fun onCreate() {
         super.onCreate()
-        DaoManager.init(this)
+        BoxManager.init(this)
     }
 }

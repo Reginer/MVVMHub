@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
+import com.google.gson.Gson
 import org.jetbrains.anko.startActivity
 import win.regin.base.BaseVmActivity
 import win.regin.common.utils.Logcat
@@ -18,6 +19,8 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
 
     override
     fun initView(savedInstanceState: Bundle?) {
+        //启动加载第一页，有网没网的，这一会儿0一会儿1的接口实在是秀
+        mViewModel.pageLiveData.postValue(1)
     }
 
     override fun initToolBar() {
@@ -27,7 +30,10 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
 
     override fun createObserver() {
         mViewModel.userLiveData.observe(this, Observer {
-            Logcat.d(it.toString())
+            it?.apply { mViewModel.getArticle(0) }
+        })
+        mViewModel.articleLiveData.observe(this, Observer {
+            Logcat.d(Gson().toJson(it))
         })
     }
 

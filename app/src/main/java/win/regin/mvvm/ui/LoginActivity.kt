@@ -4,10 +4,7 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_login.*
 import win.regin.base.BaseVmActivity
-import win.regin.common.database.DaoManager
-import win.regin.common.database.DaoOptions
 import win.regin.common.text
-import win.regin.common.utils.Logcat
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.LoginViewModel
 

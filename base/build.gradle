@@ -29,7 +29,6 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':common')
-    kapt(MvvmExt.roomCompiler)
     testImplementation(MvvmExt.junit)
     androidTestImplementation(MvvmExt.extUnit)
     androidTestImplementation(MvvmExt.espresso)

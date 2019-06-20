@@ -1,8 +1,8 @@
 package win.regin.common.convert
 
-import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import io.objectbox.converter.PropertyConverter
 import win.regin.common.entity.ArticleDataEntity
 
 /**
@@ -10,18 +10,16 @@ import win.regin.common.entity.ArticleDataEntity
  * 联系方式:QQ:282921012
  * 功能描述:
  */
-class ArticleListConvert {
-    @TypeConverter
-    fun toJson(value: String?): List<ArticleDataEntity>? {
+class ArticleListConvert :  PropertyConverter<List<ArticleDataEntity>,String> {
+    override fun convertToDatabaseValue(entityProperty: List<ArticleDataEntity>?): String {
+        return Gson().toJson(entityProperty)
+    }
+
+
+    override fun convertToEntityProperty(databaseValue: String?): List<ArticleDataEntity>? {
         val type = object : TypeToken<List<ArticleDataEntity>>() {
         }.type
-        return Gson().fromJson(value, type)
+        return Gson().fromJson(databaseValue, type)
     }
-
-    @TypeConverter
-    fun toString(value: List<ArticleDataEntity>?): String? {
-        return Gson().toJson(value)
-    }
-
 
 }

@@ -7,7 +7,6 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
-import win.regin.common.database.DaoManager
 import win.regin.common.database.UserEntity
 import win.regin.common.utils.Logcat
 import win.regin.mvvm.model.BaseEntity
@@ -19,9 +18,11 @@ import win.regin.mvvm.repository.LoginRepository
  *         功能描述:
  */
 class LoginViewModel : BaseViewModel() {
-    private val loginRepository = LoginRepository()
+    private val loginRepository by lazy { LoginRepository() }
 
-    private val loginLiveData: MutableLiveData<BaseEntity<UserEntity>> = MutableLiveData()
+    private val loginLiveData: MutableLiveData<BaseEntity<UserEntity>> by lazy {
+        MutableLiveData<BaseEntity<UserEntity>>()
+    }
     val loginResult: LiveData<UserEntity?> = Transformations.map(loginLiveData) {
         if (it.errorCode == 0) {
             saveUser(it.data)
@@ -44,10 +45,6 @@ class LoginViewModel : BaseViewModel() {
     }
 
     private fun saveUser(userEntity: UserEntity) {
-        viewModelScope.launch {
-            runCatching {
-                loginRepository.insertUser(userEntity)
-            }
-        }
+        loginRepository.insertUser(userEntity)
     }
 }

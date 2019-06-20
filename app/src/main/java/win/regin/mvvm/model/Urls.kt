@@ -16,4 +16,8 @@ object Urls {
      * 登录
      */
     const val LOGIN = "user/login"
+    /**
+     * 文章列表
+     */
+    const val ARTICLE = "article/list/{page}/json"
 }
