@@ -7,9 +7,8 @@ import io.objectbox.android.ObjectBoxLiveData
 import win.regin.common.database.ArticleEntity
 import win.regin.common.database.BoxOptions
 import win.regin.common.database.UserEntity
-import win.regin.common.entity.ArticleDataEntity
+import win.regin.common.entity.BaseEntity
 import win.regin.mvvm.api.NetworkApi
-import win.regin.mvvm.model.BaseEntity
 
 /**
  * @author :Reginer in  19-6-19 下午5:55.
@@ -24,11 +23,9 @@ class MainRepository {
         }
     }
 
-    fun parseArticleData(pageLiveData: MutableLiveData<Long>, data: BaseEntity<ArticleEntity>) {
-        if (data.errorCode == 0) {
-            BoxOptions.insertArticle(data.data)
-            pageLiveData.postValue(data.data.curPage)
-        }
+    fun parseArticleData(pageLiveData: MutableLiveData<Long>, data: ArticleEntity) {
+        BoxOptions.insertArticle(data)
+        pageLiveData.postValue(data.curPage)
     }
 
     suspend fun getArticle(page: Long): BaseEntity<ArticleEntity> {

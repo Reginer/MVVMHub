@@ -2,8 +2,8 @@ package win.regin.mvvm.repository
 
 import win.regin.common.database.BoxOptions
 import win.regin.common.database.UserEntity
+import win.regin.common.entity.BaseEntity
 import win.regin.mvvm.api.NetworkApi
-import win.regin.mvvm.model.BaseEntity
 
 /**
  * @author :Reginer in  2019/6/18 21:33.

@@ -1,6 +1,5 @@
 package win.regin.mvvm.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -8,10 +7,11 @@ import androidx.lifecycle.viewModelScope
 import io.objectbox.android.ObjectBoxLiveData
 import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
+import win.regin.base.state.ViewState
+import win.regin.common.database.ArticleEntity
 import win.regin.common.database.BoxOptions
 import win.regin.common.database.UserEntity
 import win.regin.common.entity.ArticleDataEntity
-import win.regin.common.utils.Logcat
 import win.regin.mvvm.repository.MainRepository
 
 /**
@@ -23,22 +23,19 @@ class MainViewModel : BaseViewModel() {
     private val mainRepository by lazy { MainRepository() }
     val userLiveData: LiveData<UserEntity?> by lazy { mainRepository.getLoginUser() }
     val pageLiveData: MutableLiveData<Long> by lazy { MutableLiveData<Long>() }
+    val articleResult: MutableLiveData<ViewState<ArticleEntity>> = MutableLiveData()
     val articleLiveData: LiveData<List<ArticleDataEntity>?> = Transformations.switchMap(pageLiveData) { page ->
         Transformations.map(ObjectBoxLiveData(BoxOptions.queryArticle())) {
-            it.find { articleEntity -> articleEntity.curPage <= page  }?.articleList
+            it.find { articleEntity -> articleEntity.curPage <= page }?.articleList
         }
+    }
+
+    fun parseArticleData(data: ArticleEntity) {
+        mainRepository.parseArticleData(pageLiveData, data)
     }
 
 
     fun getArticle(curPage: Long) {
-        viewModelScope.launch {
-            runCatching {
-                mainRepository.getArticle(curPage)
-            }.onSuccess {
-                mainRepository.parseArticleData(pageLiveData, it)
-            }.onFailure {
-                Logcat.e(Log.getStackTraceString(it))
-            }
-        }
+        viewModelScope.launch { launchWork(mainRepository.getArticle(curPage), articleResult) }
     }
 }

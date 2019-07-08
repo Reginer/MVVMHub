@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_login.*
 import win.regin.base.BaseVmActivity
+import win.regin.base.state.ViewState
 import win.regin.common.text
+import win.regin.common.utils.Logcat
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.LoginViewModel
 
@@ -29,7 +31,15 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
 
     override fun createObserver() {
         mViewModel.loginResult.observe(this, Observer {
-            it?.let { finish() }
+            when (it) {
+                is ViewState.Success -> {
+                    mViewModel.saveUser(it.data)
+                    finish()
+                }
+                is ViewState.Error -> {
+                    Logcat.e(it.error.errorMsg)
+                }
+            }
         })
     }
 

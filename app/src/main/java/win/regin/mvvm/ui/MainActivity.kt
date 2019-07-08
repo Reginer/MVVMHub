@@ -7,6 +7,7 @@ import androidx.lifecycle.Observer
 import com.google.gson.Gson
 import org.jetbrains.anko.startActivity
 import win.regin.base.BaseVmActivity
+import win.regin.base.state.ViewState
 import win.regin.common.utils.Logcat
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.MainViewModel
@@ -31,6 +32,16 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
     override fun createObserver() {
         mViewModel.userLiveData.observe(this, Observer {
             it?.apply { mViewModel.getArticle(0) }
+        })
+        mViewModel.articleResult.observe(this, Observer {
+            when (it) {
+                is ViewState.Success -> {
+                    mViewModel.parseArticleData(it.data)
+                }
+                is ViewState.Error -> {
+                    Logcat.e(it.error.errorMsg)
+                }
+            }
         })
         mViewModel.articleLiveData.observe(this, Observer {
             Logcat.d(Gson().toJson(it))
