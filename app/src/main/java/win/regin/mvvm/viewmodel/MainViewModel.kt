@@ -36,6 +36,11 @@ class MainViewModel : BaseViewModel() {
 
 
     fun getArticle(curPage: Long) {
-        viewModelScope.launch { launchWork(mainRepository.getArticle(curPage), articleResult) }
+        viewModelScope.launch {
+            runCatching {
+                articleResult.value = ViewState.onHubLoading()
+                mainRepository.getArticle(curPage)
+            }.launchWork(articleResult)
+        }
     }
 }

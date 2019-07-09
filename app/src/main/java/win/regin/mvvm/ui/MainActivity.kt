@@ -34,13 +34,9 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
             it?.apply { mViewModel.getArticle(0) }
         })
         mViewModel.articleResult.observe(this, Observer {
-            when (it) {
-                is ViewState.Success -> {
-                    mViewModel.parseArticleData(it.data)
-                }
-                is ViewState.Error -> {
-                    Logcat.e(it.error.errorMsg)
-                }
+            parseState(it)
+            if (it is ViewState.Success) {
+                mViewModel.parseArticleData(it.data)
             }
         })
         mViewModel.articleLiveData.observe(this, Observer {

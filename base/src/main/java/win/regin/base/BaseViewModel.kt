@@ -2,10 +2,10 @@ package win.regin.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import win.regin.common.entity.BaseEntity
 import win.regin.base.state.ViewState
 import win.regin.base.state.paresException
 import win.regin.base.state.paresResult
+import win.regin.common.entity.BaseEntity
 
 /**
  * @author :Reginer in  19-6-18 下午6:03.
@@ -18,6 +18,14 @@ open class BaseViewModel : ViewModel() {
         runCatching {
             block
         }.onSuccess {
+            viewState.paresResult(it)
+        }.onFailure {
+            viewState.paresException(it)
+        }
+    }
+
+    fun <T> Result<BaseEntity<T>>.launchWork(viewState: MutableLiveData<ViewState<T>>) {
+        this.onSuccess {
             viewState.paresResult(it)
         }.onFailure {
             viewState.paresException(it)

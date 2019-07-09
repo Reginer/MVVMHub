@@ -19,12 +19,15 @@ class LoginViewModel : BaseViewModel() {
 
     fun login(username: String, password: String) {
         viewModelScope.launch {
-            launchWork(loginRepository.login(username, password), loginResult)
+            runCatching {
+                loginResult.value = ViewState.onHubLoading()
+                loginRepository.login(username, password)
+            }.launchWork(loginResult)
         }
 
     }
 
-     fun saveUser(userEntity: UserEntity) {
+    fun saveUser(userEntity: UserEntity) {
         loginRepository.insertUser(userEntity)
     }
 }
