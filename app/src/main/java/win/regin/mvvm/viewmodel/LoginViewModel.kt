@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
+import win.regin.base.ext.parseResult
 import win.regin.common.database.UserEntity
 import win.regin.base.state.ViewState
 import win.regin.mvvm.repository.LoginRepository
@@ -22,7 +23,7 @@ class LoginViewModel : BaseViewModel() {
             runCatching {
                 loginResult.value = ViewState.onHubLoading()
                 loginRepository.login(username, password)
-            }.launchWork(loginResult)
+            }.parseResult(loginResult)
         }
 
     }

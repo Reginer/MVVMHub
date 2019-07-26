@@ -1,8 +1,9 @@
-package win.regin.base.state
+package win.regin.base.ext
 
 import androidx.lifecycle.MutableLiveData
 import win.regin.common.entity.BaseEntity
 import win.regin.base.exception.HubException
+import win.regin.base.state.ViewState
 
 /**
  * @author :Reginer in  2019/7/8 10:47.
@@ -18,7 +19,8 @@ import win.regin.base.exception.HubException
 fun <T> MutableLiveData<ViewState<T>>.paresResult(result: BaseEntity<T>) {
     when (result.errorCode) {
         0 -> this.value = ViewState.onHubSuccess(result.data)
-        else -> this.value = ViewState.onHubError(HubException(result.errorMsg))
+        else -> this.value =
+            ViewState.onHubError(HubException(result.errorMsg))
     }
 }
 
