@@ -1,9 +1,13 @@
 package win.regin.base.ext
 
 import win.regin.base.BaseVmActivity
+import win.regin.base.R
 import win.regin.base.exception.HubException
 import win.regin.base.state.ViewState
+import win.regin.common.AppCommon
 import java.lang.reflect.ParameterizedType
+import java.net.ConnectException
+import java.net.UnknownHostException
 
 /**
  * @author :Reginer in  19-6-18 下午6:04.
@@ -48,5 +52,17 @@ fun <T> BaseVmActivity<*>.parseState(
             dismissProgress(viewState.error)
             onError?.run { this(viewState.error) }
         }
+    }
+}
+
+
+/**
+ *我想了一东的时间，错误提示需要改一下
+ */
+fun Throwable?.parseErrorString(): String {
+    return when (this) {
+        is ConnectException -> AppCommon.instance.getString(R.string.ConnectException)
+        is UnknownHostException -> AppCommon.instance.getString(R.string.UnknownHostException)
+        else -> AppCommon.instance.getString(R.string.ElseNetException)
     }
 }

@@ -1,7 +1,6 @@
 package win.regin.base.exception
 
-import java.net.ConnectException
-import java.net.UnknownHostException
+import win.regin.base.ext.parseErrorString
 
 /**
  * @author :Reginer in  2019/7/8 9:41.
@@ -21,10 +20,6 @@ class HubException : Exception {
     }
 
     private fun parseError(throwable: Throwable?): String {
-        return when (throwable) {
-            is ConnectException -> "网络错误"
-            is UnknownHostException -> "无网络连接"
-            else -> "其他错误"
-        }
+        return throwable.parseErrorString()
     }
 }
