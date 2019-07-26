@@ -1,12 +1,9 @@
 package win.regin.mvvm.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
-import win.regin.base.ext.parseResult
-import win.regin.common.database.UserEntity
 import win.regin.base.state.ViewState
+import win.regin.common.database.UserEntity
 import win.regin.mvvm.repository.LoginRepository
 
 /**
@@ -19,13 +16,7 @@ class LoginViewModel : BaseViewModel() {
     val loginResult: MutableLiveData<ViewState<UserEntity>> = MutableLiveData()
 
     fun login(username: String, password: String) {
-        viewModelScope.launch {
-            runCatching {
-                loginResult.value = ViewState.onHubLoading()
-                loginRepository.login(username, password)
-            }.parseResult(loginResult)
-        }
-
+        launchRequest({ loginRepository.login(username, password) }, loginResult)
     }
 
     fun saveUser(userEntity: UserEntity) {

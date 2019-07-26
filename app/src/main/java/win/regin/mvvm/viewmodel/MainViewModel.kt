@@ -3,11 +3,8 @@ package win.regin.mvvm.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
-import androidx.lifecycle.viewModelScope
 import io.objectbox.android.ObjectBoxLiveData
-import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
-import win.regin.base.ext.parseResult
 import win.regin.base.state.ViewState
 import win.regin.common.database.ArticleEntity
 import win.regin.common.database.BoxOptions
@@ -38,11 +35,6 @@ class MainViewModel : BaseViewModel() {
 
 
     fun getArticle(curPage: Long) {
-        viewModelScope.launch {
-            runCatching {
-                articleResult.value = ViewState.onHubLoading()
-                mainRepository.getArticle(curPage)
-            }.parseResult(articleResult)
-        }
+        launchRequest({ mainRepository.getArticle(curPage) }, articleResult)
     }
 }
