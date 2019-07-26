@@ -1,12 +1,10 @@
 package win.regin.base.ext
 
-import androidx.lifecycle.MutableLiveData
 import win.regin.base.BaseVmActivity
 import win.regin.base.R
 import win.regin.base.exception.HubException
 import win.regin.base.state.ViewState
 import win.regin.common.AppCommon
-import win.regin.common.entity.BaseEntity
 import java.lang.reflect.ParameterizedType
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -69,13 +67,3 @@ fun Throwable?.parseErrorString(): String {
     }
 }
 
-/**
- * 格式化请求结果
- */
-fun <T> Result<BaseEntity<T>>.parseResult(viewState: MutableLiveData<ViewState<T>>) {
-    this.onSuccess {
-        viewState.paresResult(it)
-    }.onFailure {
-        viewState.paresException(it)
-    }
-}
