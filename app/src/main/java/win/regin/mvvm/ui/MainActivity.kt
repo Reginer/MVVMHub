@@ -31,7 +31,7 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
 
     override fun createObserver() {
         mViewModel.userLiveData.observe(this, Observer {
-            it?.apply { mViewModel.getArticle(0) }
+            it?.let { mViewModel.getArticle(0) }
         })
         mViewModel.articleResult.observe(this, Observer { viewState ->
             parseState(viewState, { mViewModel.parseArticleData(it) })
