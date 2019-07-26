@@ -8,7 +8,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import win.regin.base.BaseVmActivity
-import win.regin.base.state.ViewState
+import win.regin.base.ext.parseState
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.MainViewModel
 
@@ -33,11 +33,8 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
         mViewModel.userLiveData.observe(this, Observer {
             it?.apply { mViewModel.getArticle(0) }
         })
-        mViewModel.articleResult.observe(this, Observer {
-            parseState(it)
-            if (it is ViewState.Success) {
-                mViewModel.parseArticleData(it.data)
-            }
+        mViewModel.articleResult.observe(this, Observer { viewState ->
+            parseState(viewState, { mViewModel.parseArticleData(it) })
         })
         mViewModel.articleLiveData.observe(this, Observer {
             content.text = Gson().toJson(it)

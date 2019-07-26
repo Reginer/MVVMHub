@@ -66,7 +66,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 显示等待框 .
      */
-    protected fun showProgress() {
+    fun showProgress() {
         Logcat.d("showProgress")
         if (mDialog == null) {
             mDialog = Dialog(this)
@@ -83,7 +83,7 @@ abstract class BaseActivity : AppCompatActivity() {
      *
      * @param error 错误信息
      */
-    protected fun dismissProgress(error: HubException?) {
+    fun dismissProgress(error: HubException?) {
         error?.let { Logcat.e(Log.getStackTraceString(it)) }
         mDialog?.dismiss()
         mDialog = null
