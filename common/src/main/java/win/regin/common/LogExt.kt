@@ -16,7 +16,7 @@ import com.orhanobut.logger.PrettyFormatStrategy
  */
 fun String.logTagDebug(debug: Boolean): AndroidLogAdapter {
     val formatStrategy = PrettyFormatStrategy.newBuilder()
-        .showThreadInfo(true).methodCount(1).tag(this).build()
+        .showThreadInfo(false).methodCount(1).tag(this).build()
     return object : AndroidLogAdapter(formatStrategy) {
         override fun isLoggable(priority: Int, tag: String?): Boolean {
             return debug
