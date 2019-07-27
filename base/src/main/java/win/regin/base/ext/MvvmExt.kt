@@ -45,11 +45,11 @@ fun <T> BaseVmActivity<*>.parseState(
             onLoading?.run { this }
         }
         is ViewState.Success -> {
-            dismissProgress(null)
+            dismissProgress()
             onSuccess(viewState.data)
         }
         is ViewState.Error -> {
-            dismissProgress(viewState.error)
+            dismissProgress()
             onError?.run { this(viewState.error) }
         }
     }

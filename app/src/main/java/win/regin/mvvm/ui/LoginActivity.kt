@@ -2,11 +2,11 @@ package win.regin.mvvm.ui
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
+import com.orhanobut.logger.Logger
 import kotlinx.android.synthetic.main.activity_login.*
 import win.regin.base.BaseVmActivity
 import win.regin.base.ext.parseState
 import win.regin.common.text
-import win.regin.common.utils.Logcat
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.LoginViewModel
 
@@ -31,7 +31,7 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
 
     override fun createObserver() {
         mViewModel.loginResult.observe(this, Observer { viewState ->
-            parseState(viewState, { mViewModel.saveUser(it);finish() }, { Logcat.e(it.errorMsg) })
+            parseState(viewState, { mViewModel.saveUser(it);finish() }, { Logger.e(it.errorMsg) })
         })
     }
 }

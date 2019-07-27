@@ -9,9 +9,9 @@ import win.regin.base.ext.parseErrorString
  */
 
 class HubException : Exception {
-    var errorMsg: String? = null
+    var errorMsg: String
 
-    constructor(error: String?) : super(error) {
+    constructor(error: String) : super(error) {
         errorMsg = error
     }
 

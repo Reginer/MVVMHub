@@ -32,6 +32,7 @@ object Version {
     const val ankoVersion = "0.10.8"
     const val materialVersion = "1.1.0-alpha08"
     const val objectboxVersion  = "2.3.4"
+    const val loggerVersion  = "2.2.0"
 }
 
 object MvvmExt {
@@ -61,6 +62,6 @@ object MvvmExt {
     const val objectboxKotlin = "io.objectbox:objectbox-kotlin:${Version.objectboxVersion}"
     const val objectboxAndroid = "io.objectbox:objectbox-android:${Version.objectboxVersion}"
     const val objectboxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:${Version.objectboxVersion}"
-
-
+    //https://github.com/orhanobut/logger
+    const val logger =  "com.orhanobut:logger:${Version.loggerVersion}"
 }

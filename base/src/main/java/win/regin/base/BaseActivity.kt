@@ -2,7 +2,6 @@ package win.regin.base
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.widget.ProgressBar
 import androidx.annotation.LayoutRes
@@ -10,8 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_base_layout.*
-import win.regin.base.exception.HubException
-import win.regin.common.utils.Logcat
 
 /**
  * @author :Reginer in  19-6-18 下午6:02.
@@ -80,10 +77,8 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 取消等待框 .
      *
-     * @param error 错误信息
      */
-    fun dismissProgress(error: HubException?) {
-        error?.let { Logcat.e(Log.getStackTraceString(it)) }
+    fun dismissProgress() {
         mDialog?.dismiss()
         mDialog = null
     }

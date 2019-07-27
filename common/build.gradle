@@ -43,6 +43,7 @@ dependencies {
     api(MvvmExt.material)
     api(MvvmExt.objectboxAndroid)
     api(MvvmExt.objectboxKotlin)
+    api(MvvmExt.logger)
     kapt(MvvmExt.objectboxProcessor)
 
     testImplementation(MvvmExt.junit)
