@@ -2,7 +2,7 @@ package win.regin.mvvm.api
 
 import okhttp3.Interceptor
 import okhttp3.Response
-import okhttp3.ResponseBody
+import okhttp3.ResponseBody.Companion.toResponseBody
 import win.regin.common.utils.Logcat
 
 /**
@@ -15,9 +15,9 @@ class LogInterceptor : Interceptor {
         val request = chain.request()
         Logcat.i("request  is::$request")
         val response = chain.proceed(chain.request())
-        val mediaType = response.body()?.contentType()
-        val content = response.body()?.string() ?: ""
+        val mediaType = response.body?.contentType()
+        val content = response.body?.string() ?: ""
         Logcat.i("response  is::$content")
-        return response.newBuilder().body(ResponseBody.create(mediaType, content)).build()
+        return response.newBuilder().body(content.toResponseBody(mediaType)).build()
     }
 }

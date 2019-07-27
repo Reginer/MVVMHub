@@ -16,18 +16,21 @@ object AppConfig {
 object Version {
     const val gradleVersion = "3.4.2"
     const val kotlinVersion = "1.3.41"
-    const val appcompatVersion = "1.0.2"
-    const val ktxVersion = "1.0.2"
-    const val constraintlayoutVersion = "1.1.3"
+    const val appcompatVersion = "1.1.0-rc01"
+    const val ktxVersion = "1.2.0-alpha02"
+    const val constraintlayoutVersion = "2.0.0-beta2"
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
     const val lifecycleVersion = "2.2.0-alpha01"
     const val retrofitVersion = "2.6.0"
-    const val coroutinesVersion = "1.2.1"
-    const val okhttp3LogVersion = "3.12.1"
-    const val ankoVersion = "0.10.7"
-    const val materialVersion = "1.1.0-alpha07"
+    //http://jcenter.bintray.com/org/jetbrains/kotlinx/kotlinx-coroutines-android/
+    const val coroutinesVersion = "1.3.0-RC"
+    //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
+    const val okhttp3LogVersion = "4.0.1"
+    //http://jcenter.bintray.com/org/jetbrains/anko/anko-commons/
+    const val ankoVersion = "0.10.8"
+    const val materialVersion = "1.1.0-alpha08"
     const val objectboxVersion  = "2.3.4"
 }
 
@@ -53,7 +56,7 @@ object MvvmExt {
     const val anko = "org.jetbrains.anko:anko-commons:${Version.ankoVersion}"
     const val material = "com.google.android.material:material:${Version.materialVersion}"
 
-    // objectbox
+    // https://github.com/objectbox/objectbox-java
     const val objectboxProcessor = "io.objectbox:objectbox-processor:${Version.objectboxVersion}"
     const val objectboxKotlin = "io.objectbox:objectbox-kotlin:${Version.objectboxVersion}"
     const val objectboxAndroid = "io.objectbox:objectbox-android:${Version.objectboxVersion}"

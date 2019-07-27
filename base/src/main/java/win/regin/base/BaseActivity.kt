@@ -67,7 +67,6 @@ abstract class BaseActivity : AppCompatActivity() {
      * 显示等待框 .
      */
     fun showProgress() {
-        Logcat.d("showProgress")
         if (mDialog == null) {
             mDialog = Dialog(this)
             mDialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
