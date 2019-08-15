@@ -1,7 +1,7 @@
 package win.regin.base
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import win.regin.base.ext.getVmClazz
 
 /**
@@ -15,9 +15,9 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
     protected lateinit var mViewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         mViewModel = createViewModel()
         createObserver()
-        super.onCreate(savedInstanceState)
     }
 
 
@@ -27,7 +27,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
      * @return viewModel
      */
     private fun createViewModel(): VM {
-        return ViewModelProviders.of(this).get(getVmClazz(this) as Class<VM>)
+        return ViewModelProvider(this).get(getVmClazz(this) as Class<VM>)
     }
 
     /**

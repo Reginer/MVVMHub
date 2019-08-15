@@ -22,7 +22,6 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_layout)
         LayoutInflater.from(this).inflate(layoutId, viewContent)
-        initView(savedInstanceState)
         initHeaderView()
     }
 
@@ -39,12 +38,6 @@ abstract class BaseActivity : AppCompatActivity() {
     @get:LayoutRes
     protected abstract val layoutId: Int
 
-    /**
-     * 初始化控件.
-     *
-     * @param savedInstanceState [onCreate]
-     */
-    protected abstract fun initView(savedInstanceState: Bundle?)
 
     private fun initHeaderView() {
         mToolBar = findViewById(R.id.toolbar)

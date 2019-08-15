@@ -20,13 +20,12 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
 
     override val layoutId: Int get() = R.layout.activity_login
 
-    override
-    fun initView(savedInstanceState: Bundle?) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         btnLogin.setOnClickListener {
             mViewModel.login(etUsername.text(), etPwd.text())
         }
-
     }
 
     override fun createObserver() {

@@ -22,7 +22,7 @@ object Version {
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
-    const val lifecycleVersion = "2.2.0-alpha01"
+    const val lifecycleVersion = "2.2.0-alpha03"
     const val retrofitVersion = "2.6.0"
     //http://jcenter.bintray.com/org/jetbrains/kotlinx/kotlinx-coroutines-android/
     const val coroutinesVersion = "1.3.0-RC"
