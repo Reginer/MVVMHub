@@ -1,7 +1,6 @@
 package win.regin.common.database
 
 
-import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
 import io.objectbox.annotation.Convert
 import io.objectbox.annotation.Entity
@@ -9,6 +8,7 @@ import io.objectbox.annotation.Id
 import io.objectbox.annotation.Unique
 import win.regin.common.convert.ArticleListConvert
 import win.regin.common.entity.ArticleDataEntity
+import win.regin.common.toJsonString
 
 /**
  * @author :Reginer in  19-6-19 下午4:42.
@@ -22,7 +22,7 @@ data class UserEntity(
     val username: String? = ""
 ) {
     override fun toString(): String {
-        return Gson().toJson(this)
+        return this.toJsonString()
     }
 }
 

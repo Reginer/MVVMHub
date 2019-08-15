@@ -1,5 +1,6 @@
 package win.regin.common
 
+import com.google.gson.Gson
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.PrettyFormatStrategy
 
@@ -22,4 +23,11 @@ fun String.logTagDebug(debug: Boolean): AndroidLogAdapter {
             return debug
         }
     }
+}
+
+/**
+ * 转换String
+ */
+fun Any?.toJsonString(): String {
+    return Gson().toJson(this)
 }

@@ -1,6 +1,6 @@
 package win.regin.common.entity
 
-import com.google.gson.Gson
+import win.regin.common.toJsonString
 
 /**
  * @author :Reginer in  19-6-19 下午6:49.
@@ -13,7 +13,7 @@ data class BaseEntity<T>(
     var data: T
 ) {
     override fun toString(): String {
-        return Gson().toJson(this)
+        return this.toJsonString()
     }
 }
 

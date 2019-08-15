@@ -4,11 +4,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.Observer
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.startActivity
 import win.regin.base.BaseVmActivity
 import win.regin.base.ext.parseState
+import win.regin.common.toJsonString
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.MainViewModel
 
@@ -37,7 +37,7 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
             parseState(viewState, { mViewModel.parseArticleData(it) })
         })
         mViewModel.articleLiveData.observe(this, Observer {
-            content.text = Gson().toJson(it)
+            content.text = it.toJsonString()
         })
     }
 
