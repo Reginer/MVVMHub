@@ -14,7 +14,7 @@ object AppConfig {
 }
 
 object Version {
-    const val gradleVersion = "3.4.2"
+    const val gradleVersion = "3.5.0"
     const val kotlinVersion = "1.3.41"
     const val appcompatVersion = "1.1.0-rc01"
     const val ktxVersion = "1.2.0-alpha02"
