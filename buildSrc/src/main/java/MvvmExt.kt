@@ -15,7 +15,7 @@ object AppConfig {
 
 object Version {
     const val gradleVersion = "3.5.0"
-    const val kotlinVersion = "1.3.41"
+    const val kotlinVersion = "1.3.50"
     const val appcompatVersion = "1.1.0-rc01"
     const val ktxVersion = "1.2.0-alpha02"
     const val constraintlayoutVersion = "2.0.0-beta2"
@@ -25,7 +25,7 @@ object Version {
     const val lifecycleVersion = "2.2.0-alpha03"
     const val retrofitVersion = "2.6.0"
     //http://jcenter.bintray.com/org/jetbrains/kotlinx/kotlinx-coroutines-android/
-    const val coroutinesVersion = "1.3.0-RC"
+    const val coroutinesVersion = "1.3.0-RC2"
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val okhttp3LogVersion = "4.0.1"
     //http://jcenter.bintray.com/org/jetbrains/anko/anko-commons/
