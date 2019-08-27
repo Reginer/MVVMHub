@@ -1,10 +1,15 @@
 package win.regin.base.ext
 
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
+import win.regin.base.BaseViewModel
 import win.regin.base.BaseVmActivity
 import win.regin.base.R
 import win.regin.base.exception.HubException
 import win.regin.base.state.ViewState
 import win.regin.common.AppCommon
+import win.regin.common.entity.BaseEntity
 import java.lang.reflect.ParameterizedType
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -67,3 +72,20 @@ fun Throwable?.parseErrorString(): String {
     }
 }
 
+/**
+ * net request
+ * @param request request method
+ * @param viewState request result
+ */
+fun <T> BaseViewModel.launchRequest(request: suspend () -> BaseEntity<T>, viewState: MutableLiveData<ViewState<T>>) {
+    viewModelScope.launch {
+        runCatching {
+            viewState.value = ViewState.onHubLoading()
+            request()
+        }.onSuccess {
+            viewState.paresResult(it)
+        }.onFailure {
+            viewState.paresException(it)
+        }
+    }
+}

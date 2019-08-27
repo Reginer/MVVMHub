@@ -13,7 +13,6 @@ public class BoxManager {
 
     public static void init(Application application) {
         sBoxStore = MyObjectBox.builder().androidContext(application).build();
-
     }
 
     private static class BoxManagerHolder {

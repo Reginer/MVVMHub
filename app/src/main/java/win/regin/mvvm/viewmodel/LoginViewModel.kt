@@ -2,6 +2,7 @@ package win.regin.mvvm.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import win.regin.base.BaseViewModel
+import win.regin.base.ext.launchRequest
 import win.regin.base.state.ViewState
 import win.regin.common.database.UserEntity
 import win.regin.mvvm.repository.LoginRepository

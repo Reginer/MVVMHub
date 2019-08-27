@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import io.objectbox.android.ObjectBoxLiveData
 import win.regin.base.BaseViewModel
+import win.regin.base.ext.launchRequest
 import win.regin.base.state.ViewState
 import win.regin.common.database.ArticleEntity
 import win.regin.common.database.BoxOptions
