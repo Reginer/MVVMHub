@@ -29,7 +29,4 @@ android {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':common')
-    testImplementation(MvvmExt.junit)
-    androidTestImplementation(MvvmExt.extUnit)
-    androidTestImplementation(MvvmExt.espresso)
 }

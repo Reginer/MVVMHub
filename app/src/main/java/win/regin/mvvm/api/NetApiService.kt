@@ -14,7 +14,7 @@ import win.regin.mvvm.model.Urls
 interface NetApiService {
     @POST(Urls.LOGIN)
     @FormUrlEncoded
-    suspend fun login(@Field("username") username: String?, @Field("password") password: String?): BaseEntity<UserEntity>
+    suspend fun login(@Field("username") username: String, @Field("password") password: String): BaseEntity<UserEntity>
 
     @GET(Urls.ARTICLE)
     suspend fun getArticle(@Path("page") page: Long): BaseEntity<ArticleEntity>

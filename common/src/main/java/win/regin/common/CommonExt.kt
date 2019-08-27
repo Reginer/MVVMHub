@@ -1,6 +1,7 @@
 package win.regin.common
 
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.PrettyFormatStrategy
 
@@ -30,4 +31,13 @@ fun String.logTagDebug(debug: Boolean): AndroidLogAdapter {
  */
 fun Any?.toJsonString(): String {
     return Gson().toJson(this)
+}
+
+
+/**
+ * String转换List
+ */
+fun <T> String?.toJsonArray(): List<T>? {
+    val type = object : TypeToken<List<T>>() {}.type
+    return Gson().fromJson(this, type)
 }

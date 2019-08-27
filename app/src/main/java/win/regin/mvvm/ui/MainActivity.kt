@@ -47,7 +47,7 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         startActivity<LoginActivity>()
         return super.onOptionsItemSelected(item)
     }

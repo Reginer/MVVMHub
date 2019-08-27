@@ -20,9 +20,7 @@ object NetworkApi {
     fun getApi(): NetApiService {
         return Retrofit.Builder().baseUrl(Urls.SERVER_URL)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .client(getOkHttpClient()).build().create(
-                NetApiService::class.java
-            )
+            .client(getOkHttpClient()).build().create(NetApiService::class.java)
     }
 
     /**
