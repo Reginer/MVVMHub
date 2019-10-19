@@ -20,7 +20,6 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //启动加载第一页，有网没网的，这一会儿0一会儿1的接口实在是秀
         mViewModel.pageLiveData.postValue(1)
     }
 

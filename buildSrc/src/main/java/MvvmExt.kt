@@ -14,24 +14,24 @@ object AppConfig {
 }
 
 object Version {
-    const val gradleVersion = "3.5.0"
+    const val gradleVersion = "3.6.0-beta01"
     const val kotlinVersion = "1.3.50"
-    const val appcompatVersion = "1.1.0-rc01"
-    const val ktxVersion = "1.2.0-alpha03"
-    const val constraintlayoutVersion = "2.0.0-beta2"
+    const val appcompatVersion = "1.1.0"
+    const val ktxVersion = "1.2.0-alpha04"
+    const val constraintlayoutVersion = "1.1.3"
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
-    const val lifecycleVersion = "2.2.0-alpha03"
-    const val retrofitVersion = "2.6.1"
+    const val lifecycleVersion = "2.2.0-alpha04"
+    const val retrofitVersion = "2.6.2"
     //http://jcenter.bintray.com/org/jetbrains/kotlinx/kotlinx-coroutines-android/
-    const val coroutinesVersion = "1.3.0"
+    const val coroutinesVersion = "1.3.2"
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val okhttp3LogVersion = "4.1.0"
     //http://jcenter.bintray.com/org/jetbrains/anko/anko-commons/
     const val ankoVersion = "0.10.8"
-    const val materialVersion = "1.1.0-alpha09"
-    const val objectboxVersion  = "2.3.4"
+    const val materialVersion = "1.1.0-alpha10"
+    const val objectboxVersion  = "2.4.0"
     const val loggerVersion  = "2.2.0"
 }
 

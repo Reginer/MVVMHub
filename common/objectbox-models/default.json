@@ -10,11 +10,14 @@
       "properties": [
         {
           "id": "2:3242578503722842600",
-          "name": "username"
+          "name": "username",
+          "type": 9
         },
         {
           "id": "3:4802906790226725850",
-          "name": "dbId"
+          "name": "dbId",
+          "type": 6,
+          "flags": 1
         }
       ],
       "relations": []
@@ -26,51 +29,68 @@
       "properties": [
         {
           "id": "1:2811560396790351727",
+          "name": "curPage",
           "indexId": "1:554022050895560541",
-          "name": "curPage"
+          "type": 6,
+          "flags": 44
         },
         {
           "id": "2:4798697552242074379",
-          "name": "offset"
+          "name": "offset",
+          "type": 5,
+          "flags": 4
         },
         {
           "id": "3:8357496799288422810",
-          "name": "isOver"
+          "name": "isOver",
+          "type": 1,
+          "flags": 4
         },
         {
           "id": "4:3997979062731811746",
-          "name": "pageCount"
+          "name": "pageCount",
+          "type": 5,
+          "flags": 4
         },
         {
           "id": "5:7834164870254560343",
-          "name": "size"
+          "name": "size",
+          "type": 5,
+          "flags": 4
         },
         {
           "id": "6:551275412301041781",
-          "name": "total"
+          "name": "total",
+          "type": 5,
+          "flags": 4
         },
         {
           "id": "7:5392617066376574552",
-          "name": "articleList"
+          "name": "articleList",
+          "type": 9
         },
         {
           "id": "8:1527988490993290166",
-          "name": "dbId"
+          "name": "dbId",
+          "type": 6,
+          "flags": 1
         }
       ],
       "relations": []
     }
   ],
   "lastEntityId": "3:5069721176899031629",
-  "lastIndexId": "1:554022050895560541",
+  "lastIndexId": "2:1429529636906737575",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
-  "modelVersion": 4,
-  "modelVersionParserMinimum": 4,
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
   "retiredEntityUids": [
     8220559811107070141
   ],
-  "retiredIndexUids": [],
+  "retiredIndexUids": [
+    1429529636906737575
+  ],
   "retiredPropertyUids": [
     5307338183151566783,
     9087577129541583789,

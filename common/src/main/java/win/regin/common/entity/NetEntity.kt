@@ -18,12 +18,15 @@ data class BaseEntity<T>(
 }
 
 data class ArticleTagEntity(
-    var name: String? = null,
-    var url: String? = null
-)
+    val name: String? = null,
+    val url: String? = null
+) {
+    override fun toString(): String {
+        return this.toJsonString()
+    }
+}
 
-
-class ArticleDataEntity(
+data class ArticleDataEntity(
     var apkLink: String? = null,
     var author: String? = null,
     var chapterId: Int = 0,
@@ -48,4 +51,8 @@ class ArticleDataEntity(
     var visible: Int = 0,
     var zan: Int = 0,
     var tags: List<ArticleTagEntity>? = null
-)
+) {
+    override fun toString(): String {
+        return this.toJsonString()
+    }
+}

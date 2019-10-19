@@ -57,11 +57,12 @@ abstract class BaseActivity : AppCompatActivity() {
      * 显示等待框 .
      */
     fun showProgress() {
-        if (mDialog == null) {
-            mDialog = Dialog(this)
+        mDialog ?: let {
+            mDialog = Dialog(it)
             mDialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
-            val progressBar = ProgressBar(this)
-            progressBar.indeterminateDrawable = ContextCompat.getDrawable(this, R.drawable.progressbar)
+            val progressBar = ProgressBar(it)
+            progressBar.indeterminateDrawable =
+                ContextCompat.getDrawable(it, R.drawable.progressbar)
             mDialog?.setContentView(progressBar)
         }
         mDialog?.show()
@@ -73,8 +74,6 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     fun dismissProgress() {
         mDialog?.dismiss()
-        mDialog = null
     }
-
 }
 
