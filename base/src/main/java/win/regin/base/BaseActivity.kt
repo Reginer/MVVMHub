@@ -64,6 +64,7 @@ abstract class BaseActivity : AppCompatActivity() {
             progressBar.indeterminateDrawable =
                 ContextCompat.getDrawable(it, R.drawable.progressbar)
             mDialog?.setContentView(progressBar)
+            mDialog?.setOnDismissListener { viewModelStore.clear() }
         }
         mDialog?.show()
     }
