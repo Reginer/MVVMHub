@@ -31,7 +31,7 @@ fun <VM> getVmClazz(obj: Any): VM {
 
 
 /**
- * 显示页面状态
+ * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
  * @param viewState 接口返回值
  * @param onLoading 加载中
  * @param onSuccess 成功回调
@@ -77,7 +77,10 @@ fun Throwable?.parseErrorString(): String {
  * @param request request method
  * @param viewState request result
  */
-fun <T> BaseViewModel.launchRequest(request: suspend () -> BaseEntity<T>, viewState: MutableLiveData<ViewState<T>>) {
+fun <T> BaseViewModel.launchRequest(
+    request: suspend () -> BaseEntity<T>,
+    viewState: MutableLiveData<ViewState<T>>
+) {
     viewModelScope.launch {
         runCatching {
             viewState.value = ViewState.onHubLoading()

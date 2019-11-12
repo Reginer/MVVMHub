@@ -23,8 +23,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
 
     /**
      * 创建viewModel
-     *
-     * @return viewModel
      */
     private fun createViewModel(): VM {
         return ViewModelProvider(this).get(getVmClazz(this) as Class<VM>)

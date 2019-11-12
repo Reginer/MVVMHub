@@ -23,18 +23,10 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_base_layout)
         LayoutInflater.from(this).inflate(layoutId, viewContent)
         initHeaderView()
-    }
-
-    override fun onStart() {
-        super.onStart()
         initToolBar()
     }
 
-    /**
-     * 获取ViewId.
-     *
-     * @return LayoutId
-     */
+
     @get:LayoutRes
     protected abstract val layoutId: Int
 
@@ -45,17 +37,11 @@ abstract class BaseActivity : AppCompatActivity() {
         mToolBar.setNavigationOnClickListener { finish() }
     }
 
-    /**
-     * 设置ToolBar.
-     */
     protected open fun initToolBar() {
 
     }
 
 
-    /**
-     * 显示等待框 .
-     */
     fun showProgress() {
         mDialog ?: let {
             mDialog = Dialog(it)
@@ -68,10 +54,6 @@ abstract class BaseActivity : AppCompatActivity() {
         mDialog?.show()
     }
 
-    /**
-     * 取消等待框 .
-     *
-     */
     fun dismissProgress() {
         mDialog?.dismiss()
     }
