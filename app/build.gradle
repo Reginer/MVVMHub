@@ -18,10 +18,28 @@ android {
         resConfigs "zh"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            storeFile file(AppConfig.storeFile)
+            storePassword AppConfig.storePassword
+            keyAlias AppConfig.keyAlias
+            keyPassword AppConfig.storePassword
+        }
+    }
     buildTypes {
         release {
+            shrinkResources true
+            zipAlignEnabled true
+            pseudoLocalesEnabled true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 

@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 apply plugin: 'io.objectbox'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -45,4 +46,12 @@ dependencies {
     api(MvvmExt.objectboxKotlin)
     api(MvvmExt.logger)
     kapt(MvvmExt.objectboxProcessor)
+}
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+androidExtensions {
+    experimental = true
 }

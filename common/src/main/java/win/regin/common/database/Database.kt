@@ -1,11 +1,14 @@
 package win.regin.common.database
 
 
+import android.os.Parcelable
+import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
 import io.objectbox.annotation.Convert
 import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.annotation.Unique
+import kotlinx.android.parcel.Parcelize
 import win.regin.common.convert.ArticleListConvert
 import win.regin.common.entity.ArticleDataEntity
 import win.regin.common.toJsonString
@@ -15,18 +18,22 @@ import win.regin.common.toJsonString
  * 联系方式:QQ:282921012
  * 功能描述:
  */
+@Keep
 @Entity
+@Parcelize
 data class UserEntity(
     @Id
     var dbId: Long = 0,
     val username: String? = ""
-) {
+) : Parcelable {
     override fun toString(): String {
         return this.toJsonString()
     }
 }
 
+@Keep
 @Entity
+@Parcelize
 data class ArticleEntity(
     @Id
     var dbId: Long = 0,
@@ -41,4 +48,4 @@ data class ArticleEntity(
     @Convert(converter = ArticleListConvert::class, dbType = String::class)
     var articleList: List<ArticleDataEntity>? = null
 
-)
+) : Parcelable

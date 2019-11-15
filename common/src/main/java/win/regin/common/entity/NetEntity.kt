@@ -1,5 +1,8 @@
 package win.regin.common.entity
 
+import android.os.Parcelable
+import androidx.annotation.Keep
+import kotlinx.android.parcel.Parcelize
 import win.regin.common.toJsonString
 
 /**
@@ -7,6 +10,7 @@ import win.regin.common.toJsonString
  * 联系方式:QQ:282921012
  * 功能描述:
  */
+@Keep
 data class BaseEntity<T>(
     var errorCode: Int = 1,
     var errorMsg: String = "",
@@ -17,15 +21,19 @@ data class BaseEntity<T>(
     }
 }
 
+@Keep
+@Parcelize
 data class ArticleTagEntity(
     val name: String? = null,
     val url: String? = null
-) {
+) : Parcelable {
     override fun toString(): String {
         return this.toJsonString()
     }
 }
 
+@Keep
+@Parcelize
 data class ArticleDataEntity(
     var apkLink: String? = null,
     var author: String? = null,
@@ -51,7 +59,7 @@ data class ArticleDataEntity(
     var visible: Int = 0,
     var zan: Int = 0,
     var tags: List<ArticleTagEntity>? = null
-) {
+) : Parcelable {
     override fun toString(): String {
         return this.toJsonString()
     }
