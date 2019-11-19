@@ -36,3 +36,12 @@ class LoginViewModel : BaseViewModel() {
     }
 }
 ```
+
+
+
+## License
+```text
+要抄随意
+
+Free copy at will.
+```
