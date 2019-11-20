@@ -11,20 +11,20 @@ object BoxOptions {
 
 
     fun getAllUserLiveData(): Query<UserEntity> {
-        return BoxManager.getInstance().dao.boxFor(UserEntity::class.java).query().build()
+        return BoxManager.instance.boxStore.boxFor(UserEntity::class.java).query().build()
 
     }
 
     fun insertUser(userEntity: UserEntity) {
-        BoxManager.getInstance().dao.boxFor(UserEntity::class.java).put(userEntity)
+        BoxManager.instance.boxStore.boxFor(UserEntity::class.java).put(userEntity)
     }
 
     fun deleteAllUser() {
-        BoxManager.getInstance().dao.boxFor(UserEntity::class.java).removeAll()
+        BoxManager.instance.boxStore.boxFor(UserEntity::class.java).removeAll()
     }
 
     fun insertArticle(articleEntity: ArticleEntity) {
-        val box = BoxManager.getInstance().dao.boxFor(ArticleEntity::class.java)
+        val box = BoxManager.instance.boxStore.boxFor(ArticleEntity::class.java)
         val ifIndex = box.all.find { it.curPage == articleEntity.curPage }
         ifIndex?.let { articleEntity.dbId = it.dbId }
         box.put(articleEntity)
@@ -32,6 +32,6 @@ object BoxOptions {
     }
 
     fun queryArticle(): Query<ArticleEntity> {
-        return BoxManager.getInstance().dao.boxFor(ArticleEntity::class.java).query().build()
+        return BoxManager.instance.boxStore.boxFor(ArticleEntity::class.java).query().build()
     }
 }

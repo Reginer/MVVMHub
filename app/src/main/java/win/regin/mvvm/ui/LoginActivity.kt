@@ -23,9 +23,7 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        btnLogin.setOnClickListener {
-            mViewModel.login(etUsername.text(), etPwd.text())
-        }
+        btnLogin.setOnClickListener { mViewModel.login(etUsername.text(), etPwd.text()) }
     }
 
     override fun createObserver() {

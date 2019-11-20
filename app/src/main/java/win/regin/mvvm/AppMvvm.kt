@@ -14,7 +14,7 @@ import win.regin.common.logTagDebug
 class AppMvvm : AppCommon() {
     override fun onCreate() {
         super.onCreate()
-        BoxManager.init(this)
+        BoxManager.instance.init(this)
         Logger.addLogAdapter(HubConstant.HUB_LOG_TAG.logTagDebug(BuildConfig.DEBUG))
     }
 }
