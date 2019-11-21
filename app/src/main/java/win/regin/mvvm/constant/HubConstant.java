@@ -1,4 +1,4 @@
-package win.regin.base.constant;
+package win.regin.mvvm.constant;
 
 /**
  * @author :Reginer in  2019/7/27 11:44.
@@ -6,10 +6,6 @@ package win.regin.base.constant;
  * 功能描述:
  */
 public class HubConstant {
-    /**
-     * 接口请求正确
-     */
-    public static final int REQUEST_RESULT_SUCCESS = 0;
     /**
      * 日志打印tag
      */

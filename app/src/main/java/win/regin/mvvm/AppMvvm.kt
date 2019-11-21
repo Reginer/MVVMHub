@@ -1,10 +1,10 @@
 package win.regin.mvvm
 
 import com.orhanobut.logger.Logger
-import win.regin.base.constant.HubConstant
 import win.regin.common.AppCommon
-import win.regin.mvvm.data.BoxManager
 import win.regin.common.logTagDebug
+import win.regin.mvvm.data.BoxManager
+import win.regin.mvvm.constant.HubConstant
 
 /**
  * @author :Reginer in  19-6-19 上午9:35.

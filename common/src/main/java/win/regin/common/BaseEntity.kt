@@ -16,6 +16,13 @@ data class BaseEntity<T>(
     override fun toString(): String {
         return this.toJsonString()
     }
+
+    /**
+     * 数据是否正确，默认实现
+     */
+    fun dataRight(): Boolean {
+        return errorCode == 0
+    }
 }
 
 
