@@ -1,7 +1,6 @@
-package win.regin.common.convert
+package win.regin.mvvm.data
 
 import io.objectbox.converter.PropertyConverter
-import win.regin.common.entity.ArticleDataEntity
 import win.regin.common.toJsonArray
 import win.regin.common.toJsonString
 

@@ -1,6 +1,6 @@
 package win.regin.base.state
 
-import win.regin.base.exception.HubException
+import win.regin.base.exception.AppException
 
 /**
  * @author :Reginer in  2019/7/8 9:42.
@@ -12,11 +12,11 @@ sealed class ViewState<out T> {
     companion object {
         fun <T> onHubSuccess(data: T): ViewState<T> = Success(data)
         fun <T> onHubLoading(): ViewState<T> = Loading
-        fun <T> onHubError(error: HubException): ViewState<T> = Error(error)
+        fun <T> onHubError(error: AppException): ViewState<T> = Error(error)
     }
 
     object Loading : ViewState<Nothing>()
     data class Success<out T>(val data: T) : ViewState<T>()
-    data class Error(val error: HubException) : ViewState<Nothing>()
+    data class Error(val error: AppException) : ViewState<Nothing>()
 }
 

@@ -1,9 +1,9 @@
 package win.regin.mvvm.api
 
 import retrofit2.http.*
-import win.regin.common.database.ArticleEntity
-import win.regin.common.database.UserEntity
-import win.regin.common.entity.BaseEntity
+import win.regin.mvvm.data.ArticleEntity
+import win.regin.mvvm.data.UserEntity
+import win.regin.common.BaseEntity
 import win.regin.mvvm.model.Urls
 
 /**

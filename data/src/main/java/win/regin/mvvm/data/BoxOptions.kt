@@ -1,4 +1,4 @@
-package win.regin.common.database
+package win.regin.mvvm.data
 
 import io.objectbox.query.Query
 

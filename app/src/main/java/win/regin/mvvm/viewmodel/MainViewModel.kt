@@ -7,10 +7,10 @@ import io.objectbox.android.ObjectBoxLiveData
 import win.regin.base.BaseViewModel
 import win.regin.base.ext.launchRequest
 import win.regin.base.state.ViewState
-import win.regin.common.database.ArticleEntity
-import win.regin.common.database.BoxOptions
-import win.regin.common.database.UserEntity
-import win.regin.common.entity.ArticleDataEntity
+import win.regin.mvvm.data.ArticleEntity
+import win.regin.mvvm.data.BoxOptions
+import win.regin.mvvm.data.UserEntity
+import win.regin.mvvm.data.ArticleDataEntity
 import win.regin.mvvm.repository.MainRepository
 
 /**

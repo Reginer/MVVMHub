@@ -3,7 +3,7 @@ package win.regin.mvvm
 import com.orhanobut.logger.Logger
 import win.regin.base.constant.HubConstant
 import win.regin.common.AppCommon
-import win.regin.common.database.BoxManager
+import win.regin.mvvm.data.BoxManager
 import win.regin.common.logTagDebug
 
 /**

@@ -52,6 +52,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':base')
+    implementation project(path: ':data')
     testImplementation(MvvmExt.junit)
     androidTestImplementation(MvvmExt.extUnit)
     androidTestImplementation(MvvmExt.espresso)

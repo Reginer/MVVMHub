@@ -6,10 +6,10 @@ import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
 import win.regin.base.BaseVmActivity
 import win.regin.base.R
-import win.regin.base.exception.HubException
+import win.regin.base.exception.AppException
 import win.regin.base.state.ViewState
 import win.regin.common.AppCommon
-import win.regin.common.entity.BaseEntity
+import win.regin.common.BaseEntity
 import java.lang.reflect.ParameterizedType
 import java.net.ConnectException
 import java.net.UnknownHostException
@@ -41,7 +41,7 @@ fun <VM> getVmClazz(obj: Any): VM {
 fun <T> BaseVmActivity<*>.parseState(
     viewState: ViewState<T>,
     onSuccess: (T) -> Unit,
-    onError: ((HubException) -> Unit)? = null,
+    onError: ((AppException) -> Unit)? = null,
     onLoading: (() -> Unit)? = null
 ) {
     when (viewState) {

@@ -1,4 +1,4 @@
-package win.regin.common.entity
+package win.regin.mvvm.data
 
 import android.os.Parcelable
 import androidx.annotation.Keep
@@ -6,21 +6,10 @@ import kotlinx.android.parcel.Parcelize
 import win.regin.common.toJsonString
 
 /**
- * @author :Reginer in  19-6-19 下午6:49.
- * 联系方式:QQ:282921012
- * 功能描述:
+ * @author :Reginer in  2019/11/21 10:11.
+ *         联系方式:QQ:282921012
+ *         功能描述:
  */
-@Keep
-data class BaseEntity<T>(
-    var errorCode: Int = 1,
-    var errorMsg: String = "",
-    var data: T
-) {
-    override fun toString(): String {
-        return this.toJsonString()
-    }
-}
-
 @Keep
 @Parcelize
 data class ArticleTagEntity(

@@ -2,8 +2,8 @@ package win.regin.base.ext
 
 import androidx.lifecycle.MutableLiveData
 import win.regin.base.constant.HubConstant
-import win.regin.common.entity.BaseEntity
-import win.regin.base.exception.HubException
+import win.regin.common.BaseEntity
+import win.regin.base.exception.AppException
 import win.regin.base.state.ViewState
 
 /**
@@ -21,7 +21,7 @@ fun <T> MutableLiveData<ViewState<T>>.paresResult(result: BaseEntity<T>) {
     value = if (result.errorCode == HubConstant.REQUEST_RESULT_SUCCESS) {
         ViewState.onHubSuccess(result.data)
     } else {
-        ViewState.onHubError(HubException(result.errorMsg))
+        ViewState.onHubError(AppException(result.errorMsg))
     }
 }
 
@@ -29,5 +29,5 @@ fun <T> MutableLiveData<ViewState<T>>.paresResult(result: BaseEntity<T>) {
  * 异常转换异常处理
  */
 fun <T> MutableLiveData<ViewState<T>>.paresException(e: Throwable) {
-    this.value = ViewState.onHubError(HubException(e))
+    this.value = ViewState.onHubError(AppException(e))
 }

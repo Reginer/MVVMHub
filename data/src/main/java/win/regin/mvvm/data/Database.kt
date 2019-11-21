@@ -1,4 +1,4 @@
-package win.regin.common.database
+package win.regin.mvvm.data
 
 
 import android.os.Parcelable
@@ -9,8 +9,6 @@ import io.objectbox.annotation.Entity
 import io.objectbox.annotation.Id
 import io.objectbox.annotation.Unique
 import kotlinx.android.parcel.Parcelize
-import win.regin.common.convert.ArticleListConvert
-import win.regin.common.entity.ArticleDataEntity
 import win.regin.common.toJsonString
 
 /**

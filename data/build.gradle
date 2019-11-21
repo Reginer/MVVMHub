@@ -3,10 +3,10 @@ apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 apply plugin: 'io.objectbox'
 apply plugin: 'kotlin-android-extensions'
+
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
-
 
     defaultConfig {
         minSdkVersion AppConfig.minSdkVersion
@@ -15,7 +15,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
+        consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
@@ -29,22 +29,8 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-
-    api(MvvmExt.kotlin)
-    api(MvvmExt.appcompat)
-    api(MvvmExt.ktx)
-    api(MvvmExt.constraintlayout)
-    api(MvvmExt.lifecycle)
-    api(MvvmExt.viewmodelKtx)
-    api(MvvmExt.retrofit)
-    api(MvvmExt.converterGson)
-    api(MvvmExt.coroutines)
-    api(MvvmExt.okhttp3Log)
-    api(MvvmExt.anko)
-    api(MvvmExt.material)
-    api(MvvmExt.objectboxAndroid)
-    api(MvvmExt.objectboxKotlin)
-    api(MvvmExt.logger)
+    implementation project(path: ':common')
+    kapt(MvvmExt.objectboxProcessor)
 }
 kotlin {
     experimental {

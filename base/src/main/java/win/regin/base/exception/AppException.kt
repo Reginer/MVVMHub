@@ -8,7 +8,7 @@ import win.regin.base.ext.parseErrorString
  *         功能描述:错误
  */
 
-class HubException : Exception {
+class AppException : Exception {
     var errorMsg: String
 
     constructor(error: String) : super(error) {

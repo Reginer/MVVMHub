@@ -4,10 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import io.objectbox.android.ObjectBoxLiveData
-import win.regin.common.database.ArticleEntity
-import win.regin.common.database.BoxOptions
-import win.regin.common.database.UserEntity
-import win.regin.common.entity.BaseEntity
+import win.regin.mvvm.data.ArticleEntity
+import win.regin.mvvm.data.BoxOptions
+import win.regin.mvvm.data.UserEntity
+import win.regin.common.BaseEntity
 import win.regin.mvvm.api.NetworkApi
 
 /**
@@ -24,7 +24,7 @@ class MainRepository {
     }
 
     fun parseArticleData(pageLiveData: MutableLiveData<Long>, data: ArticleEntity) {
-        BoxOptions.insertArticle(data)
+        win.regin.mvvm.data.BoxOptions.insertArticle(data)
         pageLiveData.postValue(data.curPage)
     }
 
