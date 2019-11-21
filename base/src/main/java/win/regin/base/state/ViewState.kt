@@ -10,9 +10,9 @@ import win.regin.base.exception.AppException
 
 sealed class ViewState<out T> {
     companion object {
-        fun <T> onHubSuccess(data: T): ViewState<T> = Success(data)
-        fun <T> onHubLoading(): ViewState<T> = Loading
-        fun <T> onHubError(error: AppException): ViewState<T> = Error(error)
+        fun <T> onAppSuccess(data: T): ViewState<T> = Success(data)
+        fun <T> onAppLoading(): ViewState<T> = Loading
+        fun <T> onAppError(error: AppException): ViewState<T> = Error(error)
     }
 
     object Loading : ViewState<Nothing>()

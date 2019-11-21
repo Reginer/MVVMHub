@@ -83,7 +83,7 @@ fun <T> BaseViewModel.launchRequest(
 ) {
     viewModelScope.launch {
         runCatching {
-            viewState.value = ViewState.onHubLoading()
+            viewState.value = ViewState.onAppLoading()
             request()
         }.onSuccess {
             viewState.paresResult(it)

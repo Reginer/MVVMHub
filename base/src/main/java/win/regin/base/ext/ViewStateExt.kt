@@ -19,9 +19,9 @@ import win.regin.base.state.ViewState
  */
 fun <T> MutableLiveData<ViewState<T>>.paresResult(result: BaseEntity<T>) {
     value = if (result.errorCode == HubConstant.REQUEST_RESULT_SUCCESS) {
-        ViewState.onHubSuccess(result.data)
+        ViewState.onAppSuccess(result.data)
     } else {
-        ViewState.onHubError(AppException(result.errorMsg))
+        ViewState.onAppError(AppException(result.errorMsg))
     }
 }
 
@@ -29,5 +29,5 @@ fun <T> MutableLiveData<ViewState<T>>.paresResult(result: BaseEntity<T>) {
  * 异常转换异常处理
  */
 fun <T> MutableLiveData<ViewState<T>>.paresException(e: Throwable) {
-    this.value = ViewState.onHubError(AppException(e))
+    this.value = ViewState.onAppError(AppException(e))
 }
