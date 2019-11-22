@@ -1,11 +1,8 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: "kotlin-kapt"
-
+apply plugin: 'io.objectbox'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -52,7 +49,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':base')
-    implementation project(path: ':data')
+    kapt(MvvmExt.objectboxProcessor)
+    implementation(MvvmExt.objectboxAndroid)
+    implementation(MvvmExt.objectboxKotlin)
     testImplementation(MvvmExt.junit)
     androidTestImplementation(MvvmExt.extUnit)
     androidTestImplementation(MvvmExt.espresso)
