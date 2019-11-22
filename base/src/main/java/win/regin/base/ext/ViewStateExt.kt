@@ -18,7 +18,7 @@ import win.regin.common.BaseEntity
  */
 fun <T> MutableLiveData<ViewState<T>>.paresResult(result: BaseEntity<T>) {
     value = if (result.dataRight()) ViewState.onAppSuccess(result.data) else
-        ViewState.onAppError(AppException(result.errorMsg))
+        ViewState.onAppError(AppException(result.getMsg()))
 }
 
 /**

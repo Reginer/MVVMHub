@@ -3,7 +3,7 @@ package win.regin.mvvm.api
 import retrofit2.http.*
 import win.regin.mvvm.data.ArticleEntity
 import win.regin.mvvm.data.UserEntity
-import win.regin.common.BaseEntity
+import win.regin.mvvm.data.AppBaseEntity
 import win.regin.mvvm.model.Urls
 
 /**
@@ -14,8 +14,8 @@ import win.regin.mvvm.model.Urls
 interface NetApiService {
     @POST(Urls.LOGIN)
     @FormUrlEncoded
-    suspend fun login(@Field("username") username: String, @Field("password") password: String): BaseEntity<UserEntity>
+    suspend fun login(@Field("username") username: String, @Field("password") password: String): AppBaseEntity<UserEntity>
 
     @GET(Urls.ARTICLE)
-    suspend fun getArticle(@Path("page") page: Long): BaseEntity<ArticleEntity>
+    suspend fun getArticle(@Path("page") page: Long): AppBaseEntity<ArticleEntity>
 }

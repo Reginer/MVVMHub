@@ -8,9 +8,9 @@ import androidx.annotation.Keep
  * 功能描述:
  */
 @Keep
-data class BaseEntity<T>(
-    var errorCode: Int = 1,
-    var errorMsg: String = "",
+open class BaseEntity<T>(
+    private var code: Int = 1,
+    private var message: String = "",
     var data: T
 ) {
     override fun toString(): String {
@@ -20,8 +20,15 @@ data class BaseEntity<T>(
     /**
      * 数据是否正确，默认实现
      */
-    fun dataRight(): Boolean {
-        return errorCode == 0
+    open fun dataRight(): Boolean {
+        return code == 0
+    }
+
+    /**
+     * 获取错误信息，默认实现
+     */
+    open fun getMsg(): String {
+        return message
     }
 }
 

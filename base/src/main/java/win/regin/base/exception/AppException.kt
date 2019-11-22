@@ -11,8 +11,8 @@ import win.regin.base.ext.parseErrorString
 class AppException : Exception {
     var errorMsg: String
 
-    constructor(error: String) : super(error) {
-        errorMsg = error
+    constructor(error: String?) : super(error) {
+        errorMsg = error ?: parseError(null)
     }
 
     constructor(throwable: Throwable?) : super(throwable) {
