@@ -10,7 +10,7 @@ object AppConfig {
     const val buildToolsVersion = "29.0.2"
     const val compileSdkVersion = 29
     const val targetSdkVersion = 29
-    const val minSdkVersion = 23
+    const val minSdkVersion = 21
     const val storePassword = "ly9999"
     const val keyAlias = "那时年少"
     const val storeFile = "../keystore/Young.jks"
@@ -36,8 +36,8 @@ object Version {
     const val materialVersion = "1.2.0-alpha01"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 2
-    const val libVersionName = "1.1"
+    const val libVersionCode = 3
+    const val libVersionName = "1.3"
 }
 
 object MvvmExt {

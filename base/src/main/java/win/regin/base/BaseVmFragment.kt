@@ -5,12 +5,11 @@ import androidx.lifecycle.ViewModelProvider
 import win.regin.base.ext.getVmClazz
 
 /**
- * @author :Reginer in  19-6-18 下午6:05.
+ * @author :Reginer in  2019/11/23 10:11.
  * 联系方式:QQ:282921012
- * 功能描述:ViewModelActivity基类，ViewModelActivity继承
+ * 功能描述:ViewModelFragment基类，ViewModelFragment继承
  */
-
-abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
+abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
 
     protected lateinit var mViewModel: VM
 
@@ -19,7 +18,6 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
         mViewModel = createViewModel()
         createObserver()
     }
-
 
     /**
      * 创建viewModel
@@ -32,6 +30,4 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
      * 创建观察者
      */
     protected abstract fun createObserver()
-
-
 }

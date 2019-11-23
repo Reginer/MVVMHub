@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_base_layout.*
 /**
  * @author :Reginer in  19-6-18 下午6:02.
  * 联系方式:QQ:282921012
- * 功能描述:
+ * 功能描述:Activity基类，普通Activity继承
  */
 abstract class BaseActivity : AppCompatActivity() {
     protected lateinit var mToolBar: Toolbar
