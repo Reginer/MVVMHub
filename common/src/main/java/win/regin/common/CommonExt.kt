@@ -41,3 +41,10 @@ fun <T> String?.toJsonArray(): List<T>? {
     val type = object : TypeToken<List<T>>() {}.type
     return Gson().fromJson(this, type)
 }
+
+/**
+ * 转换成对象
+ */
+inline fun <reified T> String.toJsonObject(): T {
+    return Gson().fromJson(this, T::class.java)
+}

@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/Reginer/MVVMHub.svg)](https://jitpack.io/#Reginer/MVVMHub)
 
 ```
-implementation 'com.github.Reginer:MVVMHub:1.1'
+implementation 'com.github.Reginer:MVVMHub:1.4'
 ```
 
 登录：
