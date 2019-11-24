@@ -76,14 +76,16 @@ fun Throwable?.parseErrorString(): String {
  * net request
  * @param request request method
  * @param viewState request result
+ * @param showLoading 配置是否显示等待框
  */
 fun <T> BaseViewModel.launchRequest(
     request: suspend () -> BaseEntity<T>,
-    viewState: MutableLiveData<ViewState<T>>
+    viewState: MutableLiveData<ViewState<T>>,
+    showLoading: Boolean = true
 ) {
     viewModelScope.launch {
         runCatching {
-            viewState.value = ViewState.onAppLoading()
+            if (showLoading) viewState.value = ViewState.onAppLoading()
             request()
         }.onSuccess {
             viewState.paresResult(it)

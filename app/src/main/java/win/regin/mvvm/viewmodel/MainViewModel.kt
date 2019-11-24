@@ -36,6 +36,6 @@ class MainViewModel : BaseViewModel() {
 
 
     fun getArticle(curPage: Long) {
-        launchRequest({ mainRepository.getArticle(curPage) }, articleResult)
+        launchRequest({ mainRepository.getArticle(curPage) }, articleResult,false)
     }
 }
