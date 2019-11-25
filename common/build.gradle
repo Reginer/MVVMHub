@@ -38,7 +38,6 @@ dependencies {
     api(MvvmExt.converterGson)
     api(MvvmExt.coroutines)
     api(MvvmExt.okhttp3Log)
-    api(MvvmExt.anko)
     api(MvvmExt.material)
     api(MvvmExt.logger)
 }

@@ -31,13 +31,11 @@ object Version {
     const val coroutinesVersion = "1.3.2"
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val okhttp3LogVersion = "4.2.2"
-    //http://jcenter.bintray.com/org/jetbrains/anko/anko-commons/
-    const val ankoVersion = "0.10.8"
     const val materialVersion = "1.2.0-alpha01"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 5
-    const val libVersionName = "1.5"
+    const val libVersionCode = 6
+    const val libVersionName = "1.6"
 }
 
 object MvvmExt {
@@ -59,7 +57,6 @@ object MvvmExt {
     const val okhttp3Log = "com.squareup.okhttp3:logging-interceptor:${Version.okhttp3LogVersion}"
     //https://github.com/Kotlin/kotlinx.coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesVersion}"
-    const val anko = "org.jetbrains.anko:anko-commons:${Version.ankoVersion}"
     const val material = "com.google.android.material:material:${Version.materialVersion}"
 
     // https://github.com/objectbox/objectbox-java
