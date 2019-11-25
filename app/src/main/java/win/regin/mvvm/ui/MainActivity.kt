@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
 import win.regin.base.BaseVmActivity
 import win.regin.base.ext.parseState
-import win.regin.common.ActivityMessenger
+import win.regin.common.startActivity
 import win.regin.common.toJsonString
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.MainViewModel
@@ -47,7 +47,7 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        ActivityMessenger.startActivity<LoginActivity>(this)
+        startActivity<LoginActivity>()
         return super.onOptionsItemSelected(item)
     }
 }
