@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
 import win.regin.base.BaseVmActivity
+import win.regin.base.BaseVmFragment
 import win.regin.base.R
 import win.regin.base.exception.AppException
 import win.regin.base.state.ViewState
@@ -60,6 +61,14 @@ fun <T> BaseVmActivity<*>.parseState(
     }
 }
 
+fun <T> BaseVmFragment<*>.parseState(
+    viewState: ViewState<T>,
+    onSuccess: (T) -> Unit,
+    onError: ((AppException) -> Unit)? = null,
+    onLoading: (() -> Unit)? = null
+) {
+    (activity as? BaseVmActivity<*>)?.parseState(viewState, onSuccess, onError, onLoading)
+}
 
 /**
  *我想了一东的时间，错误提示需要改一下
