@@ -35,7 +35,7 @@ object Version {
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
     const val libVersionCode = 11
-    const val libVersionName = "1.9.1"
+    const val libVersionName = "1.9.2"
 }
 
 object MvvmExt {
