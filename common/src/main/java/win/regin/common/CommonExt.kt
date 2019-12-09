@@ -1,9 +1,10 @@
 package win.regin.common
 
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.PrettyFormatStrategy
+import java.lang.reflect.ParameterizedType
+import java.lang.reflect.Type
 
 
 /**
@@ -33,13 +34,17 @@ fun Any?.toJsonString(): String {
     return Gson().toJson(this)
 }
 
+class ParameterizedTypeImpl(private val clazz: Class<*>) : ParameterizedType {
+    override fun getRawType(): Type = List::class.java
+    override fun getOwnerType(): Type? = null
+    override fun getActualTypeArguments(): Array<Type> = arrayOf(clazz)
+}
 
 /**
  * String转换List
  */
-fun <T> String?.toJsonArray(): List<T>? {
-    val type = object : TypeToken<List<T>>() {}.type
-    return Gson().fromJson(this, type)
+inline fun <reified T> String?.toJsonArray(): List<T>? {
+    return Gson().fromJson<List<T>>(this, ParameterizedTypeImpl(T::class.java))
 }
 
 /**
