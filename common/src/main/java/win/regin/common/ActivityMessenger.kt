@@ -64,8 +64,10 @@ object ActivityMessenger {
      * @param starter 发起的Fragment
      * @param params extras键值对
      */
-    inline fun <reified TARGET : Activity> startActivity(starter: Fragment, vararg params: Pair<String, Any>) =
-        starter.startActivity(Intent(starter.context, TARGET::class.java).putExtras(*params))
+    inline fun <reified TARGET : Activity> startActivity(
+        starter: Fragment,
+        vararg params: Pair<String, Any>
+    ) = starter.startActivity(Intent(starter.context, TARGET::class.java).putExtras(*params))
 
     /**
      * Adapter跳转，同[Context.startActivity]
@@ -106,8 +108,11 @@ object ActivityMessenger {
      * @param target 要启动的Activity
      * @param params extras键值对
      */
-    fun startActivity(starter: FragmentActivity, target: KClass<out Activity>, vararg params: Pair<String, Any>) =
-        starter.startActivity(Intent(starter, target.java).putExtras(*params))
+    fun startActivity(
+        starter: FragmentActivity,
+        target: KClass<out Activity>,
+        vararg params: Pair<String, Any>
+    ) = starter.startActivity(Intent(starter, target.java).putExtras(*params))
 
     /**
      *  Fragment跳转，同[Activity.startActivity]
@@ -238,14 +243,22 @@ object ActivityMessenger {
         crossinline callback: ((result: Intent?) -> Unit)
     ) {
         starter ?: return
-        val intent = Intent(starter, target.java).putExtras(*params)
+        startActivityForResult(starter, Intent(starter, target.java).putExtras(*params), callback)
+    }
+
+    inline fun startActivityForResult(
+        starter: FragmentActivity?,
+        intent: Intent, crossinline callback: ((result: Intent?) -> Unit)
+    ) {
+        starter ?: return
         val fm = starter.supportFragmentManager
         val fragment = GhostFragment()
         fragment.init(++sRequestCode, intent) { result ->
             callback(result)
             fm.beginTransaction().remove(fragment).commitAllowingStateLoss()
         }
-        fm.beginTransaction().add(fragment, GhostFragment::class.java.simpleName).commitAllowingStateLoss()
+        fm.beginTransaction().add(fragment, GhostFragment::class.java.simpleName)
+            .commitAllowingStateLoss()
     }
 
     /**
@@ -503,3 +516,71 @@ fun <T> extraAct(extraName: String): ActivityExtras<T?> = ActivityExtras(extraNa
 
 fun <T> extraAct(extraName: String, defaultValue: T): ActivityExtras<T> =
     ActivityExtras(extraName, defaultValue)
+
+
+/**
+ * 以下方法只是把ActivityMessenger里面的方法变成了扩展方法
+ */
+inline fun <reified TARGET : Activity> FragmentActivity.startActivity(
+    vararg params: Pair<String, Any>
+) = startActivity(Intent(this, TARGET::class.java).putExtras(*params))
+
+inline fun <reified TARGET : Activity> Fragment.startActivity(
+    vararg params: Pair<String, Any>
+) = activity?.run {
+    startActivity(Intent(this, TARGET::class.java).putExtras(*params))
+}
+
+fun FragmentActivity.startActivity(
+    target: KClass<out Activity>, vararg params: Pair<String, Any>
+) = startActivity(Intent(this, target.java).putExtras(*params))
+
+fun Fragment.startActivity(
+    target: KClass<out Activity>, vararg params: Pair<String, Any>
+) = activity?.run {
+    startActivity(Intent(this, target.java).putExtras(*params))
+}
+
+inline fun <reified TARGET : Activity> FragmentActivity.startActivityForResult(
+    vararg params: Pair<String, Any>, crossinline callback: ((result: Intent?) -> Unit)
+) = startActivityForResult(TARGET::class, *params, callback = callback)
+
+inline fun <reified TARGET : Activity> Fragment.startActivityForResult(
+    vararg params: Pair<String, Any>, crossinline callback: ((result: Intent?) -> Unit)
+) = activity?.startActivityForResult(TARGET::class, *params, callback = callback)
+
+inline fun FragmentActivity.startActivityForResult(
+    target: KClass<out Activity>, vararg params: Pair<String, Any>,
+    crossinline callback: ((result: Intent?) -> Unit)
+) = ActivityMessenger.startActivityForResult(this, target, *params, callback = callback)
+
+inline fun Fragment.startActivityForResult(
+    target: KClass<out Activity>, vararg params: Pair<String, Any>,
+    crossinline callback: ((result: Intent?) -> Unit)
+) = activity?.run {
+    ActivityMessenger.startActivityForResult(this, target, *params, callback = callback)
+}
+
+fun Activity.finish(vararg params: Pair<String, Any>) = run {
+    setResult(Activity.RESULT_OK, Intent().putExtras(*params))
+    finish()
+}
+
+fun Activity.finish(intent: Intent) = run {
+    setResult(Activity.RESULT_OK, intent)
+    finish()
+}
+
+fun String.toIntent(flags: Int = 0): Intent = Intent(this).setFlags(flags)
+
+inline fun FragmentActivity?.startActivityForResult(
+    intent: Intent, crossinline callback: ((result: Intent?) -> Unit)
+) = this?.run {
+    ActivityMessenger.startActivityForResult(this, intent, callback)
+}
+
+inline fun Fragment.startActivityForResult(
+    intent: Intent, crossinline callback: ((result: Intent?) -> Unit)
+) = activity?.run {
+    ActivityMessenger.startActivityForResult(this, intent, callback)
+}
