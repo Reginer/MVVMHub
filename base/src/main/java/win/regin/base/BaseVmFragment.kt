@@ -29,5 +29,5 @@ abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
     /**
      * 创建观察者
      */
-    protected abstract fun createObserver()
+    abstract fun createObserver()
 }

@@ -31,7 +31,7 @@ abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
     /**
      * 创建观察者
      */
-    protected abstract fun createObserver()
+     abstract fun createObserver()
 
 
 }
