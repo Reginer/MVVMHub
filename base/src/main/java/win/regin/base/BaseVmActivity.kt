@@ -12,7 +12,7 @@ import win.regin.base.ext.getVmClazz
 
 abstract class BaseVmActivity<VM : BaseViewModel> : BaseActivity() {
 
-    protected lateinit var mViewModel: VM
+    lateinit var mViewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -11,7 +11,7 @@ import win.regin.base.ext.getVmClazz
  */
 abstract class BaseVmFragment<VM : BaseViewModel> : BaseFragment() {
 
-    protected lateinit var mViewModel: VM
+    lateinit var mViewModel: VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
