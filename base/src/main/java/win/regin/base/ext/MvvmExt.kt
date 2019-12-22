@@ -103,3 +103,11 @@ fun <T> BaseViewModel.launchRequest(
         }
     }
 }
+
+
+/**
+ * 以协程形式执行
+ */
+fun BaseViewModel.launchBlock(block: () -> Unit) {
+    viewModelScope.launch { block() }
+}
