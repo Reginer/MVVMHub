@@ -18,7 +18,7 @@ object AppConfig {
 
 object Version {
     const val gradleVersion = "3.5.2"
-    const val kotlinVersion = "1.3.60"
+    const val kotlinVersion = "1.3.70"
     const val appcompatVersion = "1.1.0"
     const val ktxVersion = "1.2.0-beta02"
     const val constraintlayoutVersion = "2.0.0-beta3"
@@ -26,7 +26,7 @@ object Version {
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
     const val lifecycleVersion = "2.2.0-rc02"
-    const val retrofitVersion = "2.6.2"
+    const val retrofitVersion = "2.7.2"
     //http://jcenter.bintray.com/org/jetbrains/kotlinx/kotlinx-coroutines-android/
     const val coroutinesVersion = "1.3.2"
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
@@ -34,8 +34,8 @@ object Version {
     const val materialVersion = "1.2.0-alpha01"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 14
-    const val libVersionName = "1.9.5"
+    const val libVersionCode = 15
+    const val libVersionName = "1.9.6"
 }
 
 object MvvmExt {

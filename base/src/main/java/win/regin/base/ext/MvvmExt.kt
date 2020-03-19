@@ -104,6 +104,20 @@ fun <T> BaseViewModel.launchRequest(
     }
 }
 
+/**
+ * net request
+ * @param request request method
+ */
+fun <T> BaseViewModel.launchRequestNoState(
+    request: suspend () -> BaseEntity<T>
+) {
+    viewModelScope.launch {
+        runCatching {
+            request()
+        }
+    }
+}
+
 
 /**
  * 以协程形式执行
