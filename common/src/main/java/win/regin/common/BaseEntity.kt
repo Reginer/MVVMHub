@@ -9,8 +9,8 @@ import androidx.annotation.Keep
  */
 @Keep
 open class BaseEntity<T>(
-    private var code: Int = 1,
-    private var message: String = "",
+    var code: Int = 1,
+    var message: String = "",
     var data: T
 ) {
     override fun toString(): String {
