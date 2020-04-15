@@ -22,6 +22,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_layout)
         LayoutInflater.from(this).inflate(layoutId, viewContent)
+        initView()
         initHeaderView()
         initToolBar()
     }
@@ -38,6 +39,10 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     protected open fun initToolBar() {
+
+    }
+
+    protected open fun initView() {
 
     }
 
