@@ -34,8 +34,8 @@ object Version {
     const val materialVersion = "1.2.0-alpha01"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 17
-    const val libVersionName = "1.9.8"
+    const val libVersionCode = 18
+    const val libVersionName = "1.9.9"
 }
 
 object MvvmExt {

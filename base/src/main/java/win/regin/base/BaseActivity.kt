@@ -22,7 +22,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_layout)
         LayoutInflater.from(this).inflate(layoutId, viewContent)
-        initView()
+        initView(savedInstanceState)
         initHeaderView()
         initToolBar()
     }
@@ -42,7 +42,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     }
 
-    protected open fun initView() {
+    protected open fun initView(savedInstanceState: Bundle?) {
 
     }
 
