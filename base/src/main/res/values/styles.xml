@@ -5,7 +5,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:src">@drawable/ic_menu_more</item>
         <item name="overlapAnchor">false</item>
-        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlNormal">?attr/hubAppMenuColor</item>
         <item name="android:dropDownListViewStyle">@style/dropDownStyle</item>
         <item name="dropDownListViewStyle">@style/dropDownStyle</item>
     </style>
