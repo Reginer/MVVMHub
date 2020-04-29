@@ -55,5 +55,5 @@ dependencies {
     implementation(MvvmExt.objectboxAndroid)
     implementation(MvvmExt.objectboxKotlin)
     debugImplementation project(path: ':base')
-    releaseImplementation  'com.github.Reginer:MVVMHub:1.9.9'
+    releaseImplementation  'com.github.Reginer:MVVMHub:1.9.11'
 }
