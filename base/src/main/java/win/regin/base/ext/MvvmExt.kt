@@ -1,5 +1,7 @@
 package win.regin.base.ext
 
+import androidx.annotation.MainThread
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
@@ -9,6 +11,8 @@ import win.regin.base.BaseVmFragment
 import win.regin.base.R
 import win.regin.base.exception.AppException
 import win.regin.base.state.ViewState
+import win.regin.base.state.VmResult
+import win.regin.base.state.VmState
 import win.regin.common.AppCommon
 import win.regin.common.BaseEntity
 import java.lang.reflect.ParameterizedType
@@ -81,12 +85,31 @@ fun Throwable?.parseErrorString(): String {
     }
 }
 
+
+@MainThread
+inline fun <T> VmLiveData<T>.vmObserver(owner: LifecycleOwner, vmResult: VmResult<T>.() -> Unit) {
+    val result = VmResult<T>();result.vmResult();observe(owner) {
+        when (it) {
+            is VmState.Loading ->{
+                result.onAppLoading()
+            }
+            is VmState.Success -> {
+                result.onAppSuccess(it.data);result.onAppComplete()
+            }
+            is VmState.Error -> {
+                result.onAppError(it.error);result.onAppComplete()
+            }
+        }
+    }
+}
+
 /**
  * net request
  * @param request request method
  * @param viewState request result
  * @param showLoading 配置是否显示等待框
  */
+@Deprecated("回调麻烦了点", ReplaceWith(expression = "launchVmRequest"))
 fun <T> BaseViewModel.launchRequest(
     request: suspend () -> BaseEntity<T>,
     viewState: MutableLiveData<ViewState<T>>,
@@ -100,6 +123,27 @@ fun <T> BaseViewModel.launchRequest(
             viewState.paresResult(it)
         }.onFailure {
             viewState.paresException(it)
+        }
+    }
+}
+
+/**
+ * net request
+ * @param request request method
+ * @param viewState request result
+ */
+fun <T> BaseViewModel.launchVmRequest(
+    request: suspend () -> BaseEntity<T>,
+    viewState: VmLiveData<T>
+) {
+    viewModelScope.launch {
+        runCatching {
+            viewState.value = VmState.Loading
+            request()
+        }.onSuccess {
+            viewState.paresVmResult(it)
+        }.onFailure {
+            viewState.paresVmException(it)
         }
     }
 }

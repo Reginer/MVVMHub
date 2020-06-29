@@ -20,3 +20,15 @@ sealed class ViewState<out T> {
     data class Error(val error: AppException) : ViewState<Nothing>()
 }
 
+class VmResult<T> {
+    var onAppSuccess: (data: T) -> Unit = {}
+    var onAppError: (AppException) -> Unit = {}
+    var onAppLoading: () -> Unit = {}
+    var onAppComplete: () -> Unit = {}
+}
+
+sealed class VmState<out T> {
+    object Loading : VmState<Nothing>()
+    data class Success<out T>(val data: T) : VmState<T>()
+    data class Error(val error: AppException) : VmState<Nothing>()
+}

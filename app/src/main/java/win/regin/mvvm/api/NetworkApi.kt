@@ -42,7 +42,7 @@ object NetworkApi {
             }
         }
         return HttpLoggingInterceptor(rLog).apply {
-            level = HttpLoggingInterceptor.Level.BODY
+            level = HttpLoggingInterceptor.Level.NONE
         }
     }
 }

@@ -17,7 +17,7 @@ object AppConfig {
 }
 
 object Version {
-    const val gradleVersion = "3.5.2"
+    const val gradleVersion = "4.0.0"
     const val kotlinVersion = "1.3.72"
     const val appcompatVersion = "1.1.0"
     const val ktxVersion = "1.2.0"
@@ -34,8 +34,8 @@ object Version {
     const val materialVersion = "1.2.0-alpha05"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 21
-    const val libVersionName = "1.9.11"
+    const val libVersionCode = 22
+    const val libVersionName = "2.0.0"
 }
 
 object MvvmExt {

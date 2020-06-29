@@ -3,7 +3,7 @@
 [![](https://jitpack.io/v/Reginer/MVVMHub.svg)](https://jitpack.io/#Reginer/MVVMHub)
 
 ```
-implementation 'com.github.Reginer:MVVMHub:1.9.11'
+implementation 'com.github.Reginer:MVVMHub:2.0.0'
 ```
 
 登录：
@@ -18,9 +18,16 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
     }
 
     override fun createObserver() {
-        mViewModel.loginResult.observe(this, Observer { viewState ->
-            parseState(viewState, { mViewModel.saveUser(it);finish() }, { Logger.e(it.errorMsg) })
-        })
+       mViewModel.loginResult.vmObserver(this) {
+                   onAppLoading = { showProgress() }
+                   onAppSuccess = { mViewModel.saveUser(it);finish() }
+                   onAppError = { Logger.e(it.errorMsg) }
+                   onAppComplete = { dismissProgress() }
+               }
+               //不管那一套，直接取成功就完事了
+       //        mViewModel.loginResult.vmObserver(this) {
+       //            onAppSuccess = { mViewModel.saveUser(it);finish() }
+       //        }
     }
 }
 ```

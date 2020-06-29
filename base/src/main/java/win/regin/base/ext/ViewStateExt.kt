@@ -3,6 +3,8 @@ package win.regin.base.ext
 import androidx.lifecycle.MutableLiveData
 import win.regin.base.exception.AppException
 import win.regin.base.state.ViewState
+import win.regin.base.state.VmResult
+import win.regin.base.state.VmState
 import win.regin.common.BaseEntity
 
 /**
@@ -22,8 +24,25 @@ fun <T> MutableLiveData<ViewState<T>>.paresResult(result: BaseEntity<T>) {
 }
 
 /**
+ * 处理返回值
+ *
+ * @param result 请求结果
+ */
+fun <T> VmLiveData<T>.paresVmResult(result: BaseEntity<T>) {
+    value = if (result.dataRight()) VmState.Success(result.data) else
+        VmState.Error(AppException(result.getMsg()))
+}
+
+/**
  * 异常转换异常处理
  */
 fun <T> MutableLiveData<ViewState<T>>.paresException(e: Throwable) {
     this.value = ViewState.onAppError(AppException(e))
+}
+
+/**
+ * 异常转换异常处理
+ */
+fun <T> VmLiveData<T>.paresVmException(e: Throwable) {
+    this.value = VmState.Error(AppException(e))
 }
