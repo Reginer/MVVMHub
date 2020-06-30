@@ -39,10 +39,10 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
 ```
 class LoginViewModel : BaseViewModel() {
     private val loginRepository by lazy { LoginRepository() }
-    val loginResult: MutableLiveData<ViewState<UserEntity>> = MutableLiveData()
+    val loginResult: VmLiveData<UserEntity> = MutableLiveData()
 
     fun login(username: String, password: String) {
-        launchRequest({ loginRepository.login(username, password) }, loginResult)
+        launchVmRequest({ loginRepository.login(username, password) }, loginResult)
     }
 
     fun saveUser(userEntity: UserEntity) {
