@@ -3,6 +3,10 @@
 [![](https://jitpack.io/v/Reginer/MVVMHub.svg)](https://jitpack.io/#Reginer/MVVMHub)
 
 ```
+maven { url 'https://jitpack.io' }
+```
+
+```
 implementation 'com.github.Reginer:MVVMHub:2.0.0'
 ```
 

@@ -21,7 +21,7 @@ object Version {
     const val kotlinVersion = "1.4.0"
     const val appcompatVersion = "1.2.0"
     const val ktxVersion = "1.2.0"
-    const val constraintlayoutVersion = "2.0.0-beta3"
+    const val constraintlayoutVersion = "2.0.0"
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
@@ -31,7 +31,7 @@ object Version {
     const val coroutinesVersion = "1.3.2"
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val okhttp3LogVersion = "4.2.2"
-    const val materialVersion = "1.2.0-alpha05"
+    const val materialVersion = "1.2.0"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
     const val libVersionCode = 22
