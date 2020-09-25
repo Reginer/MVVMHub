@@ -33,6 +33,7 @@ dependencies {
     api(MvvmExt.ktx)
     api(MvvmExt.constraintlayout)
     api(MvvmExt.lifecycle)
+    api(MvvmExt.lifecycleKtx)
     api(MvvmExt.viewmodelKtx)
     api(MvvmExt.retrofit)
     api(MvvmExt.converterGson)

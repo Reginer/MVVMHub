@@ -34,8 +34,8 @@ object Version {
     const val materialVersion = "1.2.0"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 22
-    const val libVersionName = "2.0.0"
+    const val libVersionCode = 23
+    const val libVersionName = "2.0.1"
 }
 
 object MvvmExt {
@@ -50,6 +50,7 @@ object MvvmExt {
     const val espresso = "androidx.test.espresso:espresso-core:${Version.espressoVersion}"
     //https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies
     const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Version.lifecycleVersion}"
+    const val lifecycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycleVersion}"
     const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycleVersion}"
     //https://github.com/square/retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
