@@ -34,8 +34,8 @@ object Version {
     const val materialVersion = "1.2.0"
     const val objectboxVersion = "2.4.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 23
-    const val libVersionName = "2.0.1"
+    const val libVersionCode = 24
+    const val libVersionName = "2.0.2"
 }
 
 object MvvmExt {
@@ -55,6 +55,8 @@ object MvvmExt {
     //https://github.com/square/retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
+    //https://github.com/google/gson
+    const val gson = "com.google.code.gson:gson:2.8.6"
     const val okhttp3Log = "com.squareup.okhttp3:logging-interceptor:${Version.okhttp3LogVersion}"
     //https://github.com/Kotlin/kotlinx.coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesVersion}"

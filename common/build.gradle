@@ -37,6 +37,7 @@ dependencies {
     api(MvvmExt.viewmodelKtx)
     api(MvvmExt.retrofit)
     api(MvvmExt.converterGson)
+    api(MvvmExt.gson)
     api(MvvmExt.coroutines)
     api(MvvmExt.okhttp3Log)
     api(MvvmExt.material)

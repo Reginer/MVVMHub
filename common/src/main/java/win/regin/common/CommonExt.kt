@@ -1,6 +1,9 @@
 package win.regin.common
 
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonElement
+import com.google.gson.JsonParser
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.PrettyFormatStrategy
 import java.lang.reflect.ParameterizedType
@@ -32,6 +35,15 @@ fun String.logTagDebug(debug: Boolean): AndroidLogAdapter {
  */
 fun Any?.toJsonString(): String {
     return Gson().toJson(this)
+}
+
+/**
+ * 转换String带格式化
+ */
+fun Any?.toJsonFormatterString(): String {
+    val gson: Gson = GsonBuilder().setPrettyPrinting().create()
+    val je: JsonElement = JsonParser.parseString(gson.toJson(this))
+    return gson.toJson(je)
 }
 
 class ParameterizedTypeImpl(private val clazz: Class<*>) : ParameterizedType {
