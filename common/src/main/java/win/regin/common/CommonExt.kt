@@ -42,7 +42,7 @@ fun Any?.toJsonString(): String {
  */
 fun Any?.toJsonFormatterString(): String {
     val gson: Gson = GsonBuilder().setPrettyPrinting().create()
-    val je: JsonElement = JsonParser.parseString(gson.toJson(this))
+    val je: JsonElement = JsonParser.parseString(toJsonString())
     return gson.toJson(je)
 }
 
