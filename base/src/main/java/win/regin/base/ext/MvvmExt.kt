@@ -88,7 +88,7 @@ fun Throwable?.parseErrorString(): String {
 
 @MainThread
 inline fun <T> VmLiveData<T>.vmObserver(owner: LifecycleOwner, vmResult: VmResult<T>.() -> Unit) {
-    val result = VmResult<T>();result.vmResult();observe(owner) {
+    val result = VmResult<T>();result.vmResult();observe(owner = owner) {
         when (it) {
             is VmState.Loading ->{
                 result.onAppLoading()
