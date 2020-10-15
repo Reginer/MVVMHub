@@ -46,6 +46,15 @@ fun Any?.toJsonFormatterString(): String {
     return gson.toJson(je)
 }
 
+/**
+ * json String格式化
+ */
+fun String?.parseString(): String {
+    val gson: Gson = GsonBuilder().setPrettyPrinting().create()
+    val jsonElement = JsonParser.parseString(this)
+    return gson.toJson(jsonElement)
+}
+
 class ParameterizedTypeImpl(private val clazz: Class<*>) : ParameterizedType {
     override fun getRawType(): Type = List::class.java
     override fun getOwnerType(): Type? = null
