@@ -15,7 +15,6 @@ import win.regin.base.state.VmResult
 import win.regin.base.state.VmState
 import win.regin.common.AppCommon
 import win.regin.common.BaseEntity
-import java.lang.reflect.ParameterizedType
 import java.net.ConnectException
 import java.net.UnknownHostException
 
@@ -26,13 +25,6 @@ import java.net.UnknownHostException
  */
 
 
-/**
- * 获取vm clazz
- */
-@Suppress("UNCHECKED_CAST")
-fun <VM> getVmClazz(obj: Any): VM {
-    return (obj.javaClass.genericSuperclass as ParameterizedType).actualTypeArguments[0] as VM
-}
 
 
 /**
@@ -43,7 +35,7 @@ fun <VM> getVmClazz(obj: Any): VM {
  * @param onError 失败回调
  *
  */
-fun <T> BaseVmActivity<*>.parseState(
+fun <T> BaseVmActivity.parseState(
     viewState: ViewState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
@@ -65,13 +57,13 @@ fun <T> BaseVmActivity<*>.parseState(
     }
 }
 
-fun <T> BaseVmFragment<*>.parseState(
+fun <T> BaseVmFragment.parseState(
     viewState: ViewState<T>,
     onSuccess: (T) -> Unit,
     onError: ((AppException) -> Unit)? = null,
     onLoading: (() -> Unit)? = null
 ) {
-    (activity as? BaseVmActivity<*>)?.parseState(viewState, onSuccess, onError, onLoading)
+    (activity as? BaseVmActivity)?.parseState(viewState, onSuccess, onError, onLoading)
 }
 
 /**

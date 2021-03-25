@@ -42,6 +42,8 @@ dependencies {
     api(MvvmExt.okhttp3Log)
     api(MvvmExt.material)
     api(MvvmExt.logger)
+    api(MvvmExt.fragmentKtx)
+    api(MvvmExt.activityKtx)
 }
 kotlin {
     experimental {

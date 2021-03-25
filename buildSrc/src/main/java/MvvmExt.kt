@@ -18,10 +18,10 @@ object AppConfig {
 
 object Version {
     const val gradleVersion = "3.5.3"
-    const val kotlinVersion = "1.4.0"
+    const val kotlinVersion = "1.4.30"
     const val appcompatVersion = "1.2.0"
-    const val ktxVersion = "1.2.0"
-    const val constraintlayoutVersion = "2.0.0"
+    const val ktxVersion = "1.3.2"
+    const val constraintlayoutVersion = "2.0.4"
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
@@ -32,10 +32,10 @@ object Version {
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val okhttp3LogVersion = "4.2.2"
     const val materialVersion = "1.2.0"
-    const val objectboxVersion = "2.4.1"
+    const val objectboxVersion = "2.9.1"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 25
-    const val libVersionName = "2.0.3"
+    const val libVersionCode = 26
+    const val libVersionName = "2.0.4"
 }
 
 object MvvmExt {
@@ -69,4 +69,6 @@ object MvvmExt {
     const val objectboxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:${Version.objectboxVersion}"
     //https://github.com/orhanobut/logger
     const val logger = "com.orhanobut:logger:${Version.loggerVersion}"
+    const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.1"
+    const val activityKtx = "androidx.activity:activity-ktx:1.2.1"
 }

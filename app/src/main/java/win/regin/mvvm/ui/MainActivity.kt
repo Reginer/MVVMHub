@@ -3,7 +3,7 @@ package win.regin.mvvm.ui
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.lifecycle.Observer
+import androidx.activity.viewModels
 import kotlinx.android.synthetic.main.activity_main.*
 import win.regin.base.BaseVmActivity
 import win.regin.base.ext.parseState
@@ -12,8 +12,9 @@ import win.regin.common.toJsonString
 import win.regin.mvvm.R
 import win.regin.mvvm.viewmodel.MainViewModel
 
-class MainActivity : BaseVmActivity<MainViewModel>() {
+class MainActivity : BaseVmActivity() {
 
+    private val mViewModel by viewModels<MainViewModel>()
 
     override val layoutId: Int get() = R.layout.activity_main
 
@@ -29,13 +30,13 @@ class MainActivity : BaseVmActivity<MainViewModel>() {
     }
 
     override fun createObserver() {
-        mViewModel.userLiveData.observe(this, Observer {
+        mViewModel.userLiveData.observe(this, {
             it?.let { mViewModel.getArticle(0) }
         })
-        mViewModel.articleResult.observe(this, Observer { viewState ->
+        mViewModel.articleResult.observe(this, { viewState ->
             parseState(viewState, { mViewModel.parseArticleData(it) })
         })
-        mViewModel.articleLiveData.observe(this, Observer {
+        mViewModel.articleLiveData.observe(this, {
             content.text = it.toJsonString()
         })
     }

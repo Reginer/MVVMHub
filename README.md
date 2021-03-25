@@ -7,14 +7,17 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```
-implementation 'com.github.Reginer:MVVMHub:2.0.1'
+implementation 'com.github.Reginer:MVVMHub:2.0.4'
 ```
 
 登录：
 ```
-class LoginActivity : BaseVmActivity<LoginViewModel>() {
+class LoginActivity : BaseVmActivity() {
+    // private val mViewModel: FragmentViewModel by activityViewModels()  use in fragment
+    private val mViewModel by viewModels<LoginViewModel>()
 
     override val layoutId: Int get() = R.layout.activity_login
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,16 +25,17 @@ class LoginActivity : BaseVmActivity<LoginViewModel>() {
     }
 
     override fun createObserver() {
-       mViewModel.loginResult.vmObserver(this) {
-                   onAppLoading = { showProgress() }
-                   onAppSuccess = { mViewModel.saveUser(it);finish() }
-                   onAppError = { Logger.e(it.errorMsg) }
-                   onAppComplete = { dismissProgress() }
-               }
-               //不管那一套，直接取成功就完事了
-       //        mViewModel.loginResult.vmObserver(this) {
-       //            onAppSuccess = { mViewModel.saveUser(it);finish() }
-       //        }
+
+        mViewModel.loginResult.vmObserver(this) {
+            onAppLoading = { showProgress() }
+            onAppSuccess = { mViewModel.saveUser(it);finish() }
+            onAppError = { Logger.e(it.errorMsg) }
+            onAppComplete = { dismissProgress() }
+        }
+        //不管那一套，直接取成功就完事了
+//        mViewModel.loginResult.vmObserver(this) {
+//            onAppSuccess = { mViewModel.saveUser(it);finish() }
+//        }
     }
 }
 ```
