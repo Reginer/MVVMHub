@@ -25,7 +25,6 @@ object Version {
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
-    const val lifecycleVersion = "2.2.0"
     const val retrofitVersion = "2.9.0"
     //http://jcenter.bintray.com/org/jetbrains/kotlinx/kotlinx-coroutines-android/
     const val coroutinesVersion = "1.5.0"
@@ -35,7 +34,7 @@ object Version {
     const val objectboxVersion = "2.9.1"
     const val loggerVersion = "2.2.0"
     const val libVersionCode = 27
-    const val libVersionName = "2.0.5"
+    const val libVersionName = "2.0.6"
 }
 
 object MvvmExt {
@@ -48,10 +47,6 @@ object MvvmExt {
     const val junit = "junit:junit:${Version.junitVersion}"
     const val extUnit = "androidx.test.ext:junit:${Version.extUnitVersion}"
     const val espresso = "androidx.test.espresso:espresso-core:${Version.espressoVersion}"
-    //https://developer.android.google.cn/jetpack/androidx/releases/lifecycle#declaring_dependencies
-    const val lifecycle = "androidx.lifecycle:lifecycle-extensions:${Version.lifecycleVersion}"
-    const val lifecycleKtx = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.lifecycleVersion}"
-    const val viewmodelKtx = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Version.lifecycleVersion}"
     //https://github.com/square/retrofit
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
