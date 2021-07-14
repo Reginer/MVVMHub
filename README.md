@@ -7,7 +7,7 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```
-implementation 'com.github.Reginer:MVVMHub:2.0.4'
+implementation 'com.github.Reginer:MVVMHub:2.0.6'
 ```
 
 登录：

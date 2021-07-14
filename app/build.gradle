@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: "kotlin-kapt"
 apply plugin: 'io.objectbox'
+apply plugin: 'kotlin-parcelize'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -47,6 +47,9 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding  true
+    }
 }
 
 dependencies {
@@ -54,9 +57,7 @@ dependencies {
     testImplementation(MvvmExt.junit)
     androidTestImplementation(MvvmExt.extUnit)
     androidTestImplementation(MvvmExt.espresso)
-    kapt(MvvmExt.objectboxProcessor)
-    implementation(MvvmExt.objectboxAndroid)
-    implementation(MvvmExt.objectboxKotlin)
     implementation project(path: ':base')
-//    releaseImplementation  'com.github.Reginer:MVVMHub:2.0.5'
+    implementation(MvvmExt.viewBinding)
+//    releaseImplementation  'com.github.Reginer:MVVMHub:2.0.6'
 }

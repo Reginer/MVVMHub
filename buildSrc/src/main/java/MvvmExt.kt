@@ -31,7 +31,6 @@ object Version {
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val okhttp3LogVersion = "4.9.1"
     const val materialVersion = "1.3.0"
-    const val objectboxVersion = "2.9.1"
     const val loggerVersion = "2.2.0"
     const val libVersionCode = 27
     const val libVersionName = "2.0.6"
@@ -58,12 +57,12 @@ object MvvmExt {
     const val material = "com.google.android.material:material:${Version.materialVersion}"
 
     // https://github.com/objectbox/objectbox-java
-    const val objectboxProcessor = "io.objectbox:objectbox-processor:${Version.objectboxVersion}"
-    const val objectboxKotlin = "io.objectbox:objectbox-kotlin:${Version.objectboxVersion}"
-    const val objectboxAndroid = "io.objectbox:objectbox-android:${Version.objectboxVersion}"
-    const val objectboxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:${Version.objectboxVersion}"
+    const val objectboxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:2.9.2-RC"
     //https://github.com/orhanobut/logger
     const val logger = "com.orhanobut:logger:${Version.loggerVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.4"
     const val activityKtx = "androidx.activity:activity-ktx:1.2.3"
+
+    //https://github.com/kirich1409/ViewBindingPropertyDelegate
+    const val viewBinding ="com.github.kirich1409:viewbindingpropertydelegate:1.4.7"
 }

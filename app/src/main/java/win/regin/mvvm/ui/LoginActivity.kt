@@ -2,12 +2,13 @@ package win.regin.mvvm.ui
 
 import android.os.Bundle
 import androidx.activity.viewModels
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.orhanobut.logger.Logger
-import kotlinx.android.synthetic.main.activity_login.*
 import win.regin.base.BaseVmActivity
 import win.regin.base.ext.vmObserver
 import win.regin.common.text
 import win.regin.mvvm.R
+import win.regin.mvvm.databinding.ActivityLoginBinding
 import win.regin.mvvm.viewmodel.LoginViewModel
 
 /**
@@ -18,13 +19,14 @@ import win.regin.mvvm.viewmodel.LoginViewModel
 class LoginActivity : BaseVmActivity() {
 
     private val mViewModel by viewModels<LoginViewModel>()
+    private val mViewBinding by viewBinding(ActivityLoginBinding::bind, R.id.root)
 
     override val layoutId: Int get() = R.layout.activity_login
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        btnLogin.setOnClickListener { mViewModel.login(etUsername.text(), etPwd.text()) }
+        mViewBinding.login.setOnClickListener { mViewModel.login(mViewBinding.username.text(), mViewBinding.pwd.text()) }
     }
 
     override fun createObserver() {

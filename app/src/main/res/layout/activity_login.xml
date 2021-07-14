@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".ui.LoginActivity">
@@ -10,11 +10,11 @@
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout"
             android:layout_width="0dp"
-            app:boxBackgroundColor="@null"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp8"
             android:layout_marginTop="@dimen/dp8"
             android:layout_marginEnd="@dimen/dp8"
+            app:boxBackgroundColor="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -22,56 +22,56 @@
             app:layout_constraintTop_toTopOf="parent">
 
         <EditText
-                android:id="@+id/etUsername"
+                android:id="@+id/username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_username"
                 android:inputType="text"
-                tools:ignore="Autofill"/>
+                tools:ignore="Autofill" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLayout2"
             android:layout_width="0dp"
-            app:boxBackgroundColor="@null"
-            android:backgroundTint="@null"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp8"
             android:layout_marginTop="@dimen/dp8"
             android:layout_marginEnd="@dimen/dp8"
+            android:backgroundTint="@null"
+            app:boxBackgroundColor="@null"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout">
 
         <EditText
-                android:id="@+id/etPwd"
+                android:id="@+id/pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/input_pwd"
                 android:inputType="textPassword"
-                tools:ignore="Autofill"/>
+                tools:ignore="Autofill" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogin"
+            android:id="@+id/login"
             android:layout_width="@dimen/dp200"
             android:layout_height="@dimen/dp50"
             android:layout_marginStart="@dimen/dp8"
             android:layout_marginTop="@dimen/dp24"
             android:layout_marginEnd="@dimen/dp8"
             android:gravity="center"
+            android:stateListAnimator="@null"
             android:text="@string/login"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@android:color/white"
             android:textSize="@dimen/sp20"
             app:backgroundTint="@color/colorPrimary"
             app:cornerRadius="@dimen/dp8"
-            android:stateListAnimator="@null"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
-            app:rippleColor="@android:color/darker_gray"/>
+            app:rippleColor="@android:color/darker_gray" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
