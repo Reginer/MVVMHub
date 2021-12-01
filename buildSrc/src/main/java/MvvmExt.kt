@@ -7,9 +7,9 @@ object AppConfig {
     const val versionName = "1.0"
     const val versionCode = 1
     const val applicationId = "win.regin.mvvm"
-    const val buildToolsVersion = "31.0.0"
-    const val compileSdkVersion = 31
-    const val targetSdkVersion = 31
+    const val buildToolsVersion = "30.0.3"
+    const val compileSdkVersion = 30
+    const val targetSdkVersion = 30
     const val minSdkVersion = 21
     const val storePassword = "ly9999"
     const val keyAlias = "那时年少"
@@ -17,10 +17,10 @@ object AppConfig {
 }
 
 object Version {
-    const val gradleVersion = "7.0.3"
+    const val gradleVersion = "4.2.1"
     const val kotlinVersion = "1.6.0"
     const val appcompatVersion = "1.3.1"
-    const val ktxVersion = "1.7.0"
+    const val ktxVersion = "1.3.2"
     const val constraintlayoutVersion = "2.1.1"
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
