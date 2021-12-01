@@ -7,9 +7,9 @@ object AppConfig {
     const val versionName = "1.0"
     const val versionCode = 1
     const val applicationId = "win.regin.mvvm"
-    const val buildToolsVersion = "30.0.3"
-    const val compileSdkVersion = 30
-    const val targetSdkVersion = 30
+    const val buildToolsVersion = "31.0.0"
+    const val compileSdkVersion = 31
+    const val targetSdkVersion = 31
     const val minSdkVersion = 21
     const val storePassword = "ly9999"
     const val keyAlias = "那时年少"
@@ -17,23 +17,23 @@ object AppConfig {
 }
 
 object Version {
-    const val gradleVersion = "4.2.1"
-    const val kotlinVersion = "1.5.10"
-    const val appcompatVersion = "1.2.0"
-    const val ktxVersion = "1.3.2"
-    const val constraintlayoutVersion = "2.0.4"
+    const val gradleVersion = "7.0.3"
+    const val kotlinVersion = "1.6.0"
+    const val appcompatVersion = "1.3.1"
+    const val ktxVersion = "1.7.0"
+    const val constraintlayoutVersion = "2.1.1"
     const val junitVersion = "4.12"
     const val extUnitVersion = "1.1.0"
     const val espressoVersion = "3.2.0"
     const val retrofitVersion = "2.9.0"
-    //http://jcenter.bintray.com/org/jetbrains/kotlinx/kotlinx-coroutines-android/
+    //https://github.com/Kotlin/kotlinx.coroutines
     const val coroutinesVersion = "1.5.0"
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val okhttp3LogVersion = "4.9.1"
-    const val materialVersion = "1.3.0"
+    const val materialVersion = "1.4.0"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 27
-    const val libVersionName = "2.0.6"
+    const val libVersionCode = 28
+    const val libVersionName = "2.0.7"
 }
 
 object MvvmExt {
@@ -50,14 +50,14 @@ object MvvmExt {
     const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofitVersion}"
     const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofitVersion}"
     //https://github.com/google/gson
-    const val gson = "com.google.code.gson:gson:2.8.7"
+    const val gson = "com.google.code.gson:gson:2.8.9"
     const val okhttp3Log = "com.squareup.okhttp3:logging-interceptor:${Version.okhttp3LogVersion}"
     //https://github.com/Kotlin/kotlinx.coroutines
     const val coroutines = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.coroutinesVersion}"
     const val material = "com.google.android.material:material:${Version.materialVersion}"
 
     // https://github.com/objectbox/objectbox-java
-    const val objectboxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:2.9.2-RC"
+    const val objectboxGradlePlugin = "io.objectbox:objectbox-gradle-plugin:3.0.1"
     //https://github.com/orhanobut/logger
     const val logger = "com.orhanobut:logger:${Version.loggerVersion}"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.4"

@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion AppConfig.compileSdkVersion
     buildToolsVersion AppConfig.buildToolsVersion
@@ -23,6 +22,10 @@ android {
         }
     }
 
+    compileOptions {
+        kotlinOptions.freeCompilerArgs += ['-module-name', "regin.mvvmhub"]
+    }
+
 }
 
 dependencies {
@@ -41,12 +44,4 @@ dependencies {
     api(MvvmExt.logger)
     api(MvvmExt.fragmentKtx)
     api(MvvmExt.activityKtx)
-}
-kotlin {
-    experimental {
-        coroutines "enable"
-    }
-}
-androidExtensions {
-    experimental = true
 }

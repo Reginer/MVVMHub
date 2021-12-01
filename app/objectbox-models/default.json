@@ -19,37 +19,32 @@
           "name": "curPage",
           "indexId": "1:2016177599447269887",
           "type": 6,
-          "flags": 44
+          "flags": 32808
         },
         {
           "id": "3:4022418015288684651",
           "name": "offset",
-          "type": 5,
-          "flags": 4
+          "type": 5
         },
         {
           "id": "4:8749553546916787952",
           "name": "isOver",
-          "type": 1,
-          "flags": 4
+          "type": 1
         },
         {
           "id": "5:7883332651206028648",
           "name": "pageCount",
-          "type": 5,
-          "flags": 4
+          "type": 5
         },
         {
           "id": "6:4074756298779513011",
           "name": "size",
-          "type": 5,
-          "flags": 4
+          "type": 5
         },
         {
           "id": "7:1745695863789391127",
           "name": "total",
-          "type": 5,
-          "flags": 4
+          "type": 5
         },
         {
           "id": "8:2249654689925852562",

@@ -3,12 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/app/src/main/res/layout/activity_login.xml" value="0.27853260869565216" />
         <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/app/src/main/res/layout/activity_main.xml" value="0.291213768115942" />
+        <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/base/src/main/res/drawable/bg_menu_touch.xml" value="0.1" />
+        <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/base/src/main/res/drawable/ic_back.xml" value="0.1" />
+        <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/base/src/main/res/drawable/ic_loading.xml" value="0.1" />
+        <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/base/src/main/res/drawable/ic_menu_more.xml" value="0.1" />
+        <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/base/src/main/res/drawable/progressbar.xml" value="0.1" />
         <entry key="..\:/Program/Android/Workspace/Me/MVVMHub/base/src/main/res/layout/activity_base_layout.xml" value="0.291213768115942" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

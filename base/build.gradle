@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: "kotlin-kapt"
 android {
     compileSdkVersion AppConfig.compileSdkVersion
@@ -23,7 +22,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
+    compileOptions {
+        kotlinOptions.freeCompilerArgs += ['-module-name', "regin.mvvmhub"]
+    }
 }
 
 dependencies {

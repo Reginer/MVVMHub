@@ -3,12 +3,12 @@ package win.regin.base
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_base_layout.*
 
 /**
  * @author :Reginer in  19-6-18 下午6:02.
@@ -21,6 +21,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base_layout)
+        val viewContent = findViewById<FrameLayout>(R.id.viewContent)
         LayoutInflater.from(this).inflate(layoutId, viewContent)
         initView(savedInstanceState)
         initHeaderView()

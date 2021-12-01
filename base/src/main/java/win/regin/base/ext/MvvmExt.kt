@@ -1,20 +1,13 @@
 package win.regin.base.ext
 
 import androidx.annotation.MainThread
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
 import win.regin.base.BaseViewModel
-import win.regin.base.BaseVmActivity
-import win.regin.base.BaseVmFragment
 import win.regin.base.R
 import win.regin.base.exception.AppException
-import win.regin.base.state.ViewState
-import win.regin.base.state.VmResult
-import win.regin.base.state.VmState
-import win.regin.common.AppCommon
 import win.regin.common.BaseEntity
+import win.regin.common.ContextHolder
 import java.net.ConnectException
 import java.net.UnknownHostException
 
@@ -25,55 +18,14 @@ import java.net.UnknownHostException
  */
 
 
-
-
-/**
- * 显示页面状态，这里有个技巧，成功回调在第一个，其后两个带默认值的回调可省
- * @param viewState 接口返回值
- * @param onLoading 加载中
- * @param onSuccess 成功回调
- * @param onError 失败回调
- *
- */
-fun <T> BaseVmActivity.parseState(
-    viewState: ViewState<T>,
-    onSuccess: (T) -> Unit,
-    onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null
-) {
-    when (viewState) {
-        is ViewState.Loading -> {
-            showProgress()
-            onLoading?.run { this }
-        }
-        is ViewState.Success -> {
-            dismissProgress()
-            onSuccess(viewState.data)
-        }
-        is ViewState.Error -> {
-            dismissProgress()
-            onError?.run { this(viewState.error) }
-        }
-    }
-}
-
-fun <T> BaseVmFragment.parseState(
-    viewState: ViewState<T>,
-    onSuccess: (T) -> Unit,
-    onError: ((AppException) -> Unit)? = null,
-    onLoading: (() -> Unit)? = null
-) {
-    (activity as? BaseVmActivity)?.parseState(viewState, onSuccess, onError, onLoading)
-}
-
 /**
  *我想了一东的时间，错误提示需要改一下
  */
 fun Throwable?.parseErrorString(): String {
     return when (this) {
-        is ConnectException -> AppCommon.instance.getString(R.string.ConnectException)
-        is UnknownHostException -> AppCommon.instance.getString(R.string.UnknownHostException)
-        else -> AppCommon.instance.getString(R.string.ElseNetException)
+        is ConnectException -> ContextHolder.getInstance().context.getString(R.string.ConnectException)
+        is UnknownHostException -> ContextHolder.getInstance().context.getString(R.string.UnknownHostException)
+        else -> ContextHolder.getInstance().context.getString(R.string.ElseNetException)
     }
 }
 
@@ -82,7 +34,7 @@ fun Throwable?.parseErrorString(): String {
 inline fun <T> VmLiveData<T>.vmObserver(owner: LifecycleOwner, vmResult: VmResult<T>.() -> Unit) {
     val result = VmResult<T>();result.vmResult();observe(owner = owner) {
         when (it) {
-            is VmState.Loading ->{
+            is VmState.Loading -> {
                 result.onAppLoading()
             }
             is VmState.Success -> {
@@ -95,39 +47,13 @@ inline fun <T> VmLiveData<T>.vmObserver(owner: LifecycleOwner, vmResult: VmResul
     }
 }
 
-/**
- * net request
- * @param request request method
- * @param viewState request result
- * @param showLoading 配置是否显示等待框
- */
-@Deprecated("回调麻烦了点", ReplaceWith(expression = "launchVmRequest"))
-fun <T> BaseViewModel.launchRequest(
-    request: suspend () -> BaseEntity<T>,
-    viewState: MutableLiveData<ViewState<T>>,
-    showLoading: Boolean = true
-) {
-    viewModelScope.launch {
-        runCatching {
-            if (showLoading) viewState.value = ViewState.onAppLoading()
-            request()
-        }.onSuccess {
-            viewState.paresResult(it)
-        }.onFailure {
-            viewState.paresException(it)
-        }
-    }
-}
 
 /**
  * net request
  * @param request request method
  * @param viewState request result
  */
-fun <T> BaseViewModel.launchVmRequest(
-    request: suspend () -> BaseEntity<T>,
-    viewState: VmLiveData<T>
-) {
+fun <T> BaseViewModel.launchVmRequest(request: suspend () -> BaseEntity<T>, viewState: VmLiveData<T>) {
     viewModelScope.launch {
         runCatching {
             viewState.value = VmState.Loading
@@ -144,9 +70,7 @@ fun <T> BaseViewModel.launchVmRequest(
  * net request
  * @param request request method
  */
-fun <T> BaseViewModel.launchRequestNoState(
-    request: suspend () -> BaseEntity<T>
-) {
+fun <T> BaseViewModel.launchRequestNoState(request: suspend () -> BaseEntity<T>) {
     viewModelScope.launch {
         runCatching {
             request()
@@ -161,3 +85,33 @@ fun <T> BaseViewModel.launchRequestNoState(
 fun BaseViewModel.launchBlock(block: () -> Unit) {
     viewModelScope.launch { block() }
 }
+
+
+/**
+ * 处理返回值
+ *
+ * @param result 请求结果
+ */
+fun <T> VmLiveData<T>.paresVmResult(result: BaseEntity<T>) {
+    value = if (result.dataRight()) VmState.Success(result.data) else
+        VmState.Error(AppException(result.getMsg()))
+}
+
+
+/**
+ * 异常转换异常处理
+ */
+fun <T> VmLiveData<T>.paresVmException(e: Throwable) {
+    this.value = VmState.Error(AppException(e))
+}
+
+@MainThread
+inline fun <T> LiveData<T>.observe(
+    owner: LifecycleOwner,
+    crossinline onChanged: (T) -> Unit
+): Observer<T> {
+    val wrappedObserver = Observer<T> { t -> onChanged.invoke(t) }
+    observe(owner, wrappedObserver)
+    return wrappedObserver
+}
+typealias VmLiveData<T> = MutableLiveData<VmState<T>>

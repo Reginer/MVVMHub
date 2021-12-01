@@ -24,10 +24,7 @@ object BoxOptions {
     }
 
     fun insertArticle(articleEntity: ArticleEntity) {
-        val box = BoxManager.instance.boxStore.boxFor(ArticleEntity::class.java)
-        val ifIndex = box.all.find { it.curPage == articleEntity.curPage }
-        ifIndex?.let { articleEntity.dbId = it.dbId }
-        box.put(articleEntity)
+        BoxManager.instance.boxStore.boxFor(ArticleEntity::class.java).put(articleEntity)
 
     }
 

@@ -6,9 +6,9 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.orhanobut.logger.Logger
 import win.regin.base.BaseVmActivity
 import win.regin.base.ext.vmObserver
-import win.regin.common.text
 import win.regin.mvvm.R
 import win.regin.mvvm.databinding.ActivityLoginBinding
+import win.regin.mvvm.text
 import win.regin.mvvm.viewmodel.LoginViewModel
 
 /**

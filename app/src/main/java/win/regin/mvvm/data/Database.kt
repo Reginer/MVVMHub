@@ -4,10 +4,7 @@ package win.regin.mvvm.data
 import android.os.Parcelable
 import androidx.annotation.Keep
 import com.google.gson.annotations.SerializedName
-import io.objectbox.annotation.Convert
-import io.objectbox.annotation.Entity
-import io.objectbox.annotation.Id
-import io.objectbox.annotation.Unique
+import io.objectbox.annotation.*
 import kotlinx.parcelize.Parcelize
 import win.regin.common.toJsonString
 
@@ -35,7 +32,7 @@ data class UserEntity(
 data class ArticleEntity(
     @Id
     var dbId: Long = 0,
-    @Unique
+    @Unique(onConflict = ConflictStrategy.REPLACE)
     var curPage: Long = 0,
     var offset: Int = 0,
     var isOver: Boolean = false,

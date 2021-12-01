@@ -1,13 +1,13 @@
 package win.regin.mvvm.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import win.regin.base.BaseVmActivity
-import win.regin.base.ext.parseState
-import win.regin.common.startActivity
+import win.regin.base.ext.vmObserver
 import win.regin.common.toJsonString
 import win.regin.mvvm.R
 import win.regin.mvvm.databinding.ActivityMainBinding
@@ -41,15 +41,15 @@ class MainActivity : BaseVmActivity() {
     }
 
     override fun createObserver() {
-        mViewModel.userLiveData.observe(this, {
+        mViewModel.userLiveData.observe(this) {
             it?.let { mViewModel.getArticle(0) }
-        })
-        mViewModel.articleResult.observe(this, { viewState ->
-            parseState(viewState, { mViewModel.parseArticleData(it) })
-        })
-        mViewModel.articleLiveData.observe(this, {
+        }
+        mViewModel.articleResult.vmObserver(this) {
+            onAppSuccess = { mViewModel.parseArticleData(it) }
+        }
+        mViewModel.articleLiveData.observe(this) {
             mViewBinding.content.text = it.toJsonString()
-        })
+        }
     }
 
 
@@ -59,7 +59,7 @@ class MainActivity : BaseVmActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        startActivity<LoginActivity>()
+        startActivity(Intent(this,LoginActivity::class.java))
         return super.onOptionsItemSelected(item)
     }
 }

@@ -1,7 +1,7 @@
 package win.regin.mvvm
 
+import android.app.Application
 import com.orhanobut.logger.Logger
-import win.regin.common.AppCommon
 import win.regin.common.logTagDebug
 import win.regin.mvvm.data.BoxManager
 import win.regin.mvvm.constant.HubConstant
@@ -11,7 +11,7 @@ import win.regin.mvvm.constant.HubConstant
  * 联系方式:QQ:282921012
  * 功能描述:
  */
-class AppMvvm : AppCommon() {
+class AppMvvm : Application() {
     override fun onCreate() {
         super.onCreate()
         BoxManager.instance.init(this)
