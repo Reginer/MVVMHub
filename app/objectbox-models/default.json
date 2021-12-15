@@ -68,14 +68,16 @@
         {
           "id": "2:2458359200209838021",
           "name": "username",
-          "type": 9
+          "indexId": "2:3098815379399554163",
+          "type": 9,
+          "flags": 34848
         }
       ],
       "relations": []
     }
   ],
   "lastEntityId": "2:4503351864145115806",
-  "lastIndexId": "1:2016177599447269887",
+  "lastIndexId": "2:3098815379399554163",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 5,
