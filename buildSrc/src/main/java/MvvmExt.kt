@@ -65,8 +65,8 @@ object Version {
     const val okhttp3LogVersion = "4.9.1"
     const val materialVersion = "1.4.0"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 30
-    const val libVersionName = "2.1.1"
+    const val libVersionCode = 31
+    const val libVersionName = "2.1.2"
 }
 
 object MvvmExt {

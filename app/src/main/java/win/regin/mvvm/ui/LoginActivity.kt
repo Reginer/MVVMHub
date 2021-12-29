@@ -65,7 +65,7 @@ class LoginActivity : BaseVmActivity() {
         mViewModel.loginResult.vmObserver(this) {
             onAppLoading { showProgress() }
             onAppSuccess { mViewModel.saveUser(it);finish() }
-            onAppError { Logger.e(it.errorMsg) }
+            onAppError { Logger.e(it.errorMsg);Logger.e("  error code is:::" + it.errorCode) }
             onAppComplete { dismissProgress() }
         }
         //不管那一套，直接取成功就完事了
