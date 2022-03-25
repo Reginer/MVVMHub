@@ -68,6 +68,13 @@ open class BaseEntity<T>(
     open fun getResCode(): Int {
         return code
     }
+
+    /**
+     * 获取返回数据
+     */
+    open fun getResData(): T {
+        return data
+    }
 }
 
 

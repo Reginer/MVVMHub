@@ -124,7 +124,7 @@ fun BaseViewModel.launchBlock(block: () -> Unit) {
  * @param result 请求结果
  */
 fun <T> VmLiveData<T>.paresVmResult(result: BaseEntity<T>) {
-    value = if (result.dataRight()) VmState.Success(result.data) else
+    value = if (result.dataRight()) VmState.Success(result.getResData()) else
         VmState.Error(AppException(result.getMsg(), result.getResCode()))
 }
 
