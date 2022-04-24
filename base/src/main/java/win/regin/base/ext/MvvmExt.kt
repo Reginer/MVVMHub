@@ -66,13 +66,13 @@ inline fun <T> VmLiveData<T>.vmObserver(owner: LifecycleOwner, vmResult: VmResul
     val result = VmResult<T>();result.vmResult();observe(owner = owner) {
         when (it) {
             is VmState.Loading -> {
-                result.onAppLoading()
+                result.onLoading()
             }
             is VmState.Success -> {
-                result.onAppSuccess(it.data);result.onAppComplete()
+                result.onSuccess(it.data);result.onComplete()
             }
             is VmState.Error -> {
-                result.onAppError(it.error);result.onAppComplete()
+                result.onError(it.error);result.onComplete()
             }
         }
     }

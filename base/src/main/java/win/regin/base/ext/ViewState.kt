@@ -40,25 +40,25 @@ import win.regin.base.exception.AppException
  */
 
 class VmResult<T> {
-    var onAppSuccess: (data: T) -> Unit = {}
-    var onAppError: (AppException) -> Unit = {}
-    var onAppLoading: () -> Unit = {}
-    var onAppComplete: () -> Unit = {}
+    var onSuccess: (data: T) -> Unit = {}
+    var onError: (AppException) -> Unit = {}
+    var onLoading: () -> Unit = {}
+    var onComplete: () -> Unit = {}
 
-    fun onAppSuccess(success: (T) -> Unit) {
-        onAppSuccess = success
+    fun onSuccess(success: (T) -> Unit) {
+        onSuccess = success
     }
 
-    fun onAppError(error: (AppException) -> Unit) {
-        onAppError = error
+    fun onError(error: (AppException) -> Unit) {
+        onError = error
     }
 
-    fun onAppLoading(loading: () -> Unit) {
-        onAppLoading = loading
+    fun onLoading(loading: () -> Unit) {
+        onLoading = loading
     }
 
-    fun onAppComplete(complete: () -> Unit) {
-        onAppComplete = complete
+    fun onComplete(complete: () -> Unit) {
+        onComplete = complete
     }
 }
 

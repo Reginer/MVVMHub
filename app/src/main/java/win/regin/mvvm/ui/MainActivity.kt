@@ -76,7 +76,7 @@ class MainActivity : BaseVmActivity() {
             it?.let { mViewModel.getArticle(0) }
         }
         mViewModel.articleResult.vmObserver(this) {
-            onAppSuccess { mViewModel.parseArticleData(it) }
+            onSuccess { mViewModel.parseArticleData(it) }
         }
         mViewModel.articleLiveData.observe(this) {
             mViewBinding.content.text = it.toJsonString()

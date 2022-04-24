@@ -63,10 +63,10 @@ class LoginActivity : BaseVmActivity() {
     override fun createObserver() {
 
         mViewModel.loginResult.vmObserver(this) {
-            onAppLoading { showProgress() }
-            onAppSuccess { mViewModel.saveUser(it);finish() }
-            onAppError { Logger.e(it.errorMsg);Logger.e("  error code is:::" + it.errorCode) }
-            onAppComplete { dismissProgress() }
+            onLoading { showProgress() }
+            onSuccess { mViewModel.saveUser(it);finish() }
+            onError { Logger.e(it.errorMsg);Logger.e("  error code is:::" + it.errorCode) }
+            onComplete { dismissProgress() }
         }
         //不管那一套，直接取成功就完事了
 //        mViewModel.loginResult.vmObserver(this) {
