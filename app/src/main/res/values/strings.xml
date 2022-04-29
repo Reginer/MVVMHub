@@ -3,4 +3,5 @@
     <string name="login">登录</string>
     <string name="input_username">输入账号</string>
     <string name="input_pwd">输入密码</string>
+    <string name="log_tag_mvvm">提示在Log里，Tag是MvvmR</string>
 </resources>

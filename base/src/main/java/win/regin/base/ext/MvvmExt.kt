@@ -100,7 +100,27 @@ fun <T> BaseViewModel.launchVmRequest(request: suspend () -> BaseEntity<T>, view
 /**
  * net request
  * @param request request method
+ * @param vmResult request result
  */
+fun <T> BaseViewModel.launchVmRequest(request: suspend () -> BaseEntity<T>, vmResult: VmResult<T>.() -> Unit) {
+    val result = VmResult<T>().also(vmResult)
+    viewModelScope.launch {
+        runCatching {
+            result.onLoading;request()
+        }.onSuccess {
+            if (it.dataRight()) result.onSuccess(it.getResData()) else result.onError(AppException(it.getMsg(), it.getResCode()))
+        }.onFailure {
+            result.onError(AppException(it))
+        }
+    }
+}
+
+
+/**
+ * net request
+ * @param request request method
+ */
+@Suppress("unused")
 fun <T> BaseViewModel.launchRequestNoState(request: suspend () -> BaseEntity<T>) {
     viewModelScope.launch {
         runCatching {
@@ -113,6 +133,7 @@ fun <T> BaseViewModel.launchRequestNoState(request: suspend () -> BaseEntity<T>)
 /**
  * 以协程形式执行
  */
+@Suppress("unused")
 fun BaseViewModel.launchBlock(block: () -> Unit) {
     viewModelScope.launch { block() }
 }

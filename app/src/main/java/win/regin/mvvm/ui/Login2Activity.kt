@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, Reginer
+ * Copyright (c) 2022, Reginer
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -31,66 +31,34 @@
  */
 package win.regin.mvvm.ui
 
-import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.activity.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import win.regin.base.BaseVmActivity
-import win.regin.base.ext.vmObserver
-import win.regin.common.toJsonString
 import win.regin.mvvm.R
-import win.regin.mvvm.databinding.ActivityMainBinding
-import win.regin.mvvm.viewmodel.MainViewModel
+import win.regin.mvvm.databinding.ActivityLoginBinding
+import win.regin.mvvm.text
+import win.regin.mvvm.viewmodel.LoginViewModel
 
 /**
- * @author :Reginer  2019/6/16 14:37.
+ * @author :Reginer  2022/4/29 0029 10:14.
  *         联系方式:QQ:282921012
- *         功能描述:主页面
+ *         功能描述:请求直接回调
  */
-class MainActivity : BaseVmActivity() {
+class Login2Activity : BaseVmActivity() {
 
-    private val mViewModel by viewModels<MainViewModel>()
+    private val mViewModel by viewModels<LoginViewModel>()
+    private val mViewBinding by viewBinding(ActivityLoginBinding::bind, R.id.root)
 
-    /**
-     * private val mViewBinding by viewBinding<ActivityMainBinding>()
-     */
-    private val mViewBinding by viewBinding(ActivityMainBinding::bind, R.id.root)
-
-    override val layoutId: Int get() = R.layout.activity_main
+    override val layoutId: Int get() = R.layout.activity_login
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mViewModel.pageLiveData.postValue(1)
-    }
-
-    override fun initToolBar() {
-        super.initToolBar()
-        mToolBar.navigationIcon = null
+        mViewBinding.login.setOnClickListener { mViewModel.login2(mViewBinding.username.text(), mViewBinding.pwd.text()) }
     }
 
     override fun createObserver() {
-        mViewModel.userLiveData.observe(this) {
-            it?.let { mViewModel.getArticle(0) }
-        }
-        mViewModel.articleResult.vmObserver(this) {
-            onSuccess { mViewModel.parseArticleData(it) }
-        }
-        mViewModel.articleLiveData.observe(this) {
-            mViewBinding.content.text = it.toJsonString()
-        }
-    }
-
-
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.app_menu_main, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        startActivity(Intent(this, LoginActivity::class.java))
-        return super.onOptionsItemSelected(item)
+        mViewModel.loginLiveData.observeForever { mViewModel.saveUser(it);finish() }
     }
 }

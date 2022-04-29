@@ -5,7 +5,6 @@
 
     <application
             android:name=".AppMvvm"
-            android:allowBackup="false"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
@@ -24,9 +23,20 @@
             </intent-filter>
         </activity>
         <activity
+                android:name=".ui.Login2Activity"
+                android:exported="false"
+                android:label="@string/login"
+                android:screenOrientation="portrait"
+                tools:ignore="LockedOrientationActivity">
+            <intent-filter>
+                <action android:name="win.regin.mvvm.action.LOGIN" />
+
+            </intent-filter>
+        </activity>
+        <activity
                 android:name=".ui.MainActivity"
                 android:exported="true"
-                android:label="@string/app_name"
+                android:launchMode="singleTop"
                 android:screenOrientation="portrait"
                 tools:ignore="LockedOrientationActivity">
             <intent-filter>
