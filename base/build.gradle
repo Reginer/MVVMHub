@@ -38,7 +38,6 @@ dependencies {
     api(MvvmExt.coroutines)
     api(MvvmExt.okhttp3Log)
     api(MvvmExt.material)
-    api(MvvmExt.logger)
     api(MvvmExt.fragmentKtx)
     api(MvvmExt.activityKtx)
 }

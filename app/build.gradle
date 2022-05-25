@@ -59,5 +59,6 @@ dependencies {
     androidTestImplementation(MvvmExt.espresso)
     implementation project(path: ':base')
     implementation(MvvmExt.viewBinding)
-//    releaseImplementation  'com.github.Reginer:MVVMHub:2.1.5'
+    implementation(MvvmExt.logger)
+//    releaseImplementation  'com.github.Reginer:MVVMHub:2.1.6'
 }
