@@ -2,7 +2,6 @@ package win.regin.mvvm
 
 import android.app.Application
 import com.orhanobut.logger.Logger
-import win.regin.common.logTagDebug
 import win.regin.mvvm.data.BoxManager
 import win.regin.mvvm.constant.HubConstant
 
