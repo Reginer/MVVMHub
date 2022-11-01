@@ -63,7 +63,26 @@ fun Throwable?.parseErrorString(): String {
 
 @MainThread
 inline fun <T> VmLiveData<T>.vmObserver(owner: LifecycleOwner, vmResult: VmResult<T>.() -> Unit) {
-    val result = VmResult<T>();result.vmResult();observe(owner = owner) {
+    val result = VmResult<T>();result.vmResult();observeVm(owner = owner) {
+        when (it) {
+            is VmState.Loading -> {
+                result.onLoading()
+            }
+            is VmState.Success -> {
+                result.onSuccess(it.data);result.onComplete()
+            }
+            is VmState.Error -> {
+                result.onError(it.error);result.onComplete()
+            }
+        }
+    }
+}
+
+
+@MainThread
+@Suppress("unused")
+inline fun <T> VmLiveData<T>.vmObserverForever(vmResult: VmResult<T>.() -> Unit) {
+    val result = VmResult<T>();result.vmResult();observeForeverVm {
         when (it) {
             is VmState.Loading -> {
                 result.onLoading()
@@ -158,12 +177,21 @@ fun <T> VmLiveData<T>.paresVmException(e: Throwable) {
 }
 
 @MainThread
-inline fun <T> LiveData<T>.observe(
+inline fun <T> LiveData<T>.observeVm(
     owner: LifecycleOwner,
     crossinline onChanged: (T) -> Unit
 ): Observer<T> {
     val wrappedObserver = Observer<T> { t -> onChanged.invoke(t) }
     observe(owner, wrappedObserver)
+    return wrappedObserver
+}
+
+@MainThread
+inline fun <T> LiveData<T>.observeForeverVm(
+    crossinline onChanged: (T) -> Unit
+): Observer<T> {
+    val wrappedObserver = Observer<T> { t -> onChanged.invoke(t) }
+    observeForever(wrappedObserver)
     return wrappedObserver
 }
 typealias VmLiveData<T> = MutableLiveData<VmState<T>>
