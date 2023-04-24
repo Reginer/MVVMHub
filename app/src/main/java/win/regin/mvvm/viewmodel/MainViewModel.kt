@@ -2,7 +2,8 @@ package win.regin.mvvm.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
+import androidx.lifecycle.switchMap
 import io.objectbox.android.ObjectBoxLiveData
 import win.regin.base.BaseViewModel
 import win.regin.base.ext.VmState
@@ -23,12 +24,12 @@ class MainViewModel : BaseViewModel() {
     val userLiveData: LiveData<UserEntity?> by lazy { mainRepository.getLoginUser() }
     val pageLiveData: MutableLiveData<Long> by lazy { MutableLiveData<Long>() }
     val articleResult: MutableLiveData<VmState<ArticleEntity>> = MutableLiveData()
-    val articleLiveData: LiveData<List<ArticleDataEntity>?> =
-        Transformations.switchMap(pageLiveData) { page ->
-            Transformations.map(ObjectBoxLiveData(BoxOptions.queryArticle())) {
-                it.find { articleEntity -> articleEntity.curPage <= page }?.articleList
-            }
+
+    val articleLiveData: LiveData<List<ArticleDataEntity>?> =pageLiveData.switchMap { page ->
+        ObjectBoxLiveData(BoxOptions.queryArticle()).map {
+            it.find { articleEntity -> articleEntity.curPage <= page }?.articleList
         }
+    }
 
     fun parseArticleData(data: ArticleEntity) {
         mainRepository.parseArticleData(pageLiveData, data)

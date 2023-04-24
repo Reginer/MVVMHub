@@ -2,9 +2,10 @@
 
 buildscript {
     repositories {
-        google()
-        mavenCentral()
+        maven {url 'https://maven.aliyun.com/repository/google'}
+        maven {url 'https://maven.aliyun.com/repository/central'}
         maven {url 'https://maven.aliyun.com/repository/public'}
+
     }
     dependencies {
         classpath(MvvmExt.buildGradle)
@@ -15,8 +16,8 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
-        mavenCentral()
+        maven {url 'https://maven.aliyun.com/repository/google'}
+        maven {url 'https://maven.aliyun.com/repository/central'}
         maven { url 'https://jitpack.io' }
         maven {url 'https://maven.aliyun.com/repository/public'}
     }

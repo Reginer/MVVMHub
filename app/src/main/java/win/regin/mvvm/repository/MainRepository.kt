@@ -2,7 +2,7 @@ package win.regin.mvvm.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.map
 import io.objectbox.android.ObjectBoxLiveData
 import win.regin.mvvm.api.NetworkApi
 import win.regin.mvvm.data.AppBaseEntity
@@ -18,9 +18,7 @@ import win.regin.mvvm.data.UserEntity
 class MainRepository {
     fun getLoginUser(): LiveData<UserEntity?> {
         val userLiveData = ObjectBoxLiveData(BoxOptions.getAllUserLiveData())
-        return Transformations.map(userLiveData) {
-            if (it.isNotEmpty()) it.first() else null
-        }
+        return userLiveData.map { if (it.isNotEmpty()) it.first() else null  }
     }
 
     fun parseArticleData(pageLiveData: MutableLiveData<Long>, data: ArticleEntity) {
