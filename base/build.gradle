@@ -2,9 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: "kotlin-kapt"
 android {
-    compileSdkVersion AppConfig.compileSdkVersion
-    buildToolsVersion AppConfig.buildToolsVersion
-
+    compileSdk AppConfig.compileSdkVersion
 
     defaultConfig {
         minSdkVersion AppConfig.minSdkVersion
@@ -36,7 +34,6 @@ dependencies {
     api(MvvmExt.converterGson)
     api(MvvmExt.gson)
     api(MvvmExt.coroutines)
-    api(MvvmExt.okhttp3Log)
     api(MvvmExt.material)
     api(MvvmExt.fragmentKtx)
     api(MvvmExt.activityKtx)

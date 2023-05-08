@@ -58,5 +58,6 @@ dependencies {
     implementation project(path: ':base')
     implementation(MvvmExt.viewBinding)
     implementation(MvvmExt.logger)
+    implementation(MvvmExt.okhttp3Log)
 //    releaseImplementation  'com.github.Reginer:MVVMHub:2.1.6'
 }

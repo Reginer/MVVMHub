@@ -35,8 +35,7 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
-import java.lang.reflect.ParameterizedType
-import java.lang.reflect.Type
+import com.google.gson.reflect.TypeToken
 
 
 /**
@@ -73,17 +72,11 @@ fun String?.parseString(): String {
     return gson.toJson(jsonElement)
 }
 
-class ParameterizedTypeImpl(private val clazz: Class<*>) : ParameterizedType {
-    override fun getRawType(): Type = List::class.java
-    override fun getOwnerType(): Type? = null
-    override fun getActualTypeArguments(): Array<Type> = arrayOf(clazz)
-}
-
 /**
  * String转换List
  */
 inline fun <reified T> String?.toJsonArray(): List<T>? {
-    return Gson().fromJson<List<T>>(this, ParameterizedTypeImpl(T::class.java))
+    return Gson().fromJson(this, TypeToken.getParameterized(List::class.java, T::class.java).type)
 }
 
 /**
