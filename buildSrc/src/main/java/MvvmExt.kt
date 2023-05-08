@@ -56,8 +56,8 @@ object Version {
     //http://jcenter.bintray.com/com/squareup/okhttp3/logging-interceptor/
     const val materialVersion = "1.8.0"
     const val loggerVersion = "2.2.0"
-    const val libVersionCode = 38
-    const val libVersionName = "2.1.9"
+    const val libVersionCode = 39
+    const val libVersionName = "2.1.10"
 }
 
 object MvvmExt {

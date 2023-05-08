@@ -1,7 +1,7 @@
 package win.regin.mvvm.data
 
 import io.objectbox.converter.PropertyConverter
-import win.regin.common.toJsonArray
+import win.regin.common.toJsonObject
 import win.regin.common.toJsonString
 
 /**
@@ -16,7 +16,7 @@ class ArticleListConvert : PropertyConverter<List<ArticleDataEntity>, String> {
 
 
     override fun convertToEntityProperty(databaseValue: String?): List<ArticleDataEntity>? {
-        return databaseValue.toJsonArray()
+        return databaseValue?.toJsonObject()
     }
 
 }

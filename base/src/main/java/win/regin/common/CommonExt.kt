@@ -36,6 +36,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
 import com.google.gson.reflect.TypeToken
+import java.lang.reflect.ParameterizedType
 
 
 /**
@@ -43,8 +44,6 @@ import com.google.gson.reflect.TypeToken
  *         联系方式:QQ:282921012
  *         功能描述:日志扩展类
  */
-
-
 
 
 /**
@@ -73,15 +72,19 @@ fun String?.parseString(): String {
 }
 
 /**
- * String转换List
- */
-inline fun <reified T> String?.toJsonArray(): List<T>? {
-    return Gson().fromJson(this, TypeToken.getParameterized(List::class.java, T::class.java).type)
-}
-
-/**
  * 转换成对象
  */
 inline fun <reified T> String.toJsonObject(): T {
-    return Gson().fromJson(this, T::class.java)
+    return if (T::class.java.isArray) {
+        Gson().fromJson(this, object : TypeToken<T>() {}.type) as T
+    } else {
+        val type = object : TypeToken<T>() {}.type
+        val rawType = (type as? ParameterizedType)?.rawType
+
+        if (rawType == List::class.java) {
+            Gson().fromJson(this, type) as T
+        } else {
+            Gson().fromJson(this, T::class.java)
+        }
+    }
 }
