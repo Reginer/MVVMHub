@@ -7,7 +7,7 @@ maven { url 'https://jitpack.io' }
 ```
 
 ```
-implementation 'com.github.Reginer:MVVMHub:2.1.9'
+implementation 'com.github.Reginer:MVVMHub:2.1.11'
 ```
 
 登录：
@@ -34,7 +34,7 @@ class LoginActivity : BaseVmActivity() {
             onError { Logger.e(it.errorMsg);Logger.e("  error code is:::" + it.errorCode) }
             onComplete { dismissProgress() }
         }
-        //不管那一套，直接取成功就完事了
+        //可以只取成功回调
 //        mViewModel.loginResult.vmObserver(this) {
 //            onSuccess { mViewModel.saveUser(it);finish() }
 //        }

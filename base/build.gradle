@@ -26,7 +26,6 @@ android {
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
     api(MvvmExt.kotlin)
     api(MvvmExt.appcompat)
     api(MvvmExt.constraintlayout)

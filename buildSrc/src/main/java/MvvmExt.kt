@@ -49,7 +49,7 @@ object AppConfig {
 
 object Version {
     const val gradleVersion = "7.4.2"
-    const val kotlinVersion = "1.8.20"
+    const val kotlinVersion = "1.9.20"
     const val retrofitVersion = "2.9.0"
 
 
@@ -57,7 +57,7 @@ object Version {
     const val materialVersion = "1.8.0"
     const val loggerVersion = "2.2.0"
     const val libVersionCode = 39
-    const val libVersionName = "2.1.10"
+    const val libVersionName = "2.1.11"
 }
 
 object MvvmExt {
